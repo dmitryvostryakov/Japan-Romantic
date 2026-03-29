@@ -1543,39 +1543,6 @@ export const afterDark = {
     },
   ] as AfterDarkMoment[],
   image: tokyoNight,
-  inspoGallery: [
-    {
-      category: 'Будуар / силуэт',
-      mood: 'тени, шёлк, интимный полумрак',
-      shots: [
-        { caption: 'Силуэт у окна', note: 'контровой свет, простыни, утренняя дымка', image: { src: 'https://images.unsplash.com/photo-1517462964-21fdcec3f25b?auto=format&fit=crop&fm=jpg&q=60&w=800', alt: 'Силуэт у окна в утреннем свете', creditLabel: 'Kinga Cichewicz', creditUrl: 'https://unsplash.com/@all_who_wander' } },
-        { caption: 'Шёлк и кружево', note: 'текстура ткани, мягкий боковой свет, детали', image: { src: 'https://images.unsplash.com/photo-1596783074918-c84cb06531ca?auto=format&fit=crop&fm=jpg&q=60&w=800', alt: 'Шёлковая ткань в мягком свете', creditLabel: 'Taisiia Stupak', creditUrl: 'https://unsplash.com/@taisiia_stupak' } },
-        { caption: 'Тени жалюзи', note: 'полосы света на коже и стене, абстрактные линии', image: { src: 'https://images.unsplash.com/photo-1520004434532-668416a08753?auto=format&fit=crop&fm=jpg&q=60&w=800', alt: 'Полосы света от жалюзи', creditLabel: 'Darius Bashar', creditUrl: 'https://unsplash.com/@dariusbashar' } },
-        { caption: 'Зеркало', note: 'отражение, фрагмент, двойная экспозиция без монтажа', image: { src: 'https://images.unsplash.com/photo-1617575521317-d2974f3b56d2?auto=format&fit=crop&fm=jpg&q=60&w=800', alt: 'Отражение в зеркале в полумраке', creditLabel: 'Content Pixie', creditUrl: 'https://unsplash.com/@contentpixie' } },
-      ],
-    },
-    {
-      category: 'Предметный натюрморт',
-      mood: 'вещи, которые расскажут историю ночи',
-      shots: [
-        { caption: 'Бокалы при свечах', note: 'два бокала, свет пламени, размытый фон', image: { src: 'https://images.unsplash.com/photo-1474722883778-792e7990302f?auto=format&fit=crop&fm=jpg&q=60&w=800', alt: 'Бокал вина в тёплом свете свечи', creditLabel: 'Kym Ellis', creditUrl: 'https://unsplash.com/@kymellis' } },
-        { caption: 'Белая ткань', note: 'небрежно брошенная простыня, текстура, тёплый свет', image: { src: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&fm=jpg&q=60&w=800', alt: 'Смятые белые простыни в утреннем свете', creditLabel: 'Jarosław Ceborski', creditUrl: 'https://unsplash.com/@jarivisuals' } },
-        { caption: 'Горячая ванна', note: 'пар, вода, деревянная купель, минимализм', image: { src: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&fm=jpg&q=60&w=800', alt: 'Японская ванна с паром', creditLabel: 'Jared Rice', creditUrl: 'https://unsplash.com/@jaredrice' } },
-        { caption: 'Парфюм', note: 'флакон духов, капли, макро с размытием', image: { src: 'https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&fm=jpg&q=60&w=800', alt: 'Флакон парфюма в мягком свете', creditLabel: 'Laura Chouette', creditUrl: 'https://unsplash.com/@laurachouette' } },
-        { caption: 'Утро после', note: 'чашка кофе, простыня, луч света — тишина', image: { src: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&fm=jpg&q=60&w=800', alt: 'Чашка кофе в утреннем свете на постели', creditLabel: 'Nathan Dumlao', creditUrl: 'https://unsplash.com/@nate_dumlao' } },
-      ],
-    },
-    {
-      category: 'Ночной город / настроение',
-      mood: 'неон, дождь, двое в темноте',
-      shots: [
-        { caption: 'Неон в лужах', note: 'отражения вывесок на мокром асфальте, расфокус', image: { src: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&fm=jpg&q=60&w=800&h=1200', alt: 'Неоновые отражения на мокром асфальте ночью', creditLabel: 'Su San Lee', creditUrl: 'https://unsplash.com/@blackodc' } },
-        { caption: 'Фонарь в переулке', note: 'одинокий свет, тёплое пятно среди тьмы, bokeh', image: { src: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&fm=jpg&q=60&w=800', alt: 'Тёплый фонарь в тёмном японском переулке', creditLabel: 'Jérémy Stenuit', creditUrl: 'https://unsplash.com/@jlenuit' } },
-        { caption: 'Бар — шесть мест', note: 'тёмное дерево, один луч, два бокала виски', image: { src: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&fm=jpg&q=60&w=800', alt: 'Бокалы виски в тёмном баре', creditLabel: 'Adam Wilson', creditUrl: 'https://unsplash.com/@fourcolourblack' } },
-        { caption: 'Пар и свет', note: 'пар пересекает луч — текстура воздуха в полумраке', image: { src: 'https://images.unsplash.com/photo-1542332213-31f87348057f?auto=format&fit=crop&fm=jpg&q=60&w=800', alt: 'Пар в луче тёплого света', creditLabel: 'Tobias Tullius', creditUrl: 'https://unsplash.com/@tobiastu' } },
-      ],
-    },
-  ],
 }
 
 /* ── per-city builder data ────────────────────────────────── */
