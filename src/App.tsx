@@ -42,14 +42,8 @@ type SectionRevealProps = {
   initial?: string
   whileInView?: string
   viewport?: { once: boolean; amount: number }
-  variants?: {
-    hidden: { opacity: number; y: number }
-    visible: {
-      opacity: number
-      y: number
-      transition: { duration: number; ease: typeof revealEase }
-    }
-  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  variants?: any
 }
 
 function App() {
@@ -63,13 +57,13 @@ function App() {
         : {
             initial: 'hidden',
             whileInView: 'visible',
-            viewport: { once: true, amount: 0.2 },
+            viewport: { once: true, amount: 0.15 },
             variants: {
-              hidden: { opacity: 0, y: 32 },
+              hidden: { opacity: 0, y: 44 },
               visible: {
                 opacity: 1,
                 y: 0,
-                transition: { duration: 0.85, ease: revealEase },
+                transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
               },
             },
           },
@@ -629,6 +623,90 @@ function HeroSection({ shouldReduceMotion }: { shouldReduceMotion: boolean }) {
   )
 }
 
+/* ── Apple-style scroll reveal block ─────────────────────── */
+const appleEase = [0.16, 1, 0.3, 1] as const
+
+const appleReveal = {
+  hidden: { opacity: 0, y: 48, filter: 'blur(6px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 1, ease: appleEase },
+  },
+}
+
+const appleRevealFast = {
+  hidden: { opacity: 0, y: 32, filter: 'blur(4px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.75, ease: appleEase },
+  },
+}
+
+const appleStagger = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12 },
+  },
+}
+
+const appleChild = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: appleEase },
+  },
+}
+
+const appleScale = {
+  hidden: { opacity: 0, scale: 0.96, filter: 'blur(8px)' },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    filter: 'blur(0px)',
+    transition: { duration: 1.1, ease: appleEase },
+  },
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function ScrollBlock({
+  children,
+  variants,
+  className,
+  delay,
+}: {
+  children: React.ReactNode
+  variants?: any
+  className?: string
+  delay?: number
+}) {
+  const base = variants || appleReveal
+  const v = delay
+    ? {
+        ...base,
+        visible: {
+          ...base.visible,
+          transition: { ...base.visible.transition, delay },
+        },
+      }
+    : base
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.15 }}
+      variants={v}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
 function CitySection({
   city,
   index,
@@ -646,18 +724,23 @@ function CitySection({
   const imageY = useTransform(
     scrollYProgress,
     [0, 1],
-    [shouldReduceMotion ? 0 : 40, shouldReduceMotion ? 0 : -40],
+    [shouldReduceMotion ? 0 : 60, shouldReduceMotion ? 0 : -60],
+  )
+  const imageScale = useTransform(
+    scrollYProgress,
+    [0, 0.5],
+    [1.08, 1],
   )
 
+  const rv = shouldReduceMotion ? undefined : appleReveal
+  const rvf = shouldReduceMotion ? undefined : appleRevealFast
+  const sc = shouldReduceMotion ? undefined : appleScale
+
   return (
-    <motion.section
+    <section
       className="city-section"
       id={city.slug}
-      initial={shouldReduceMotion ? undefined : { opacity: 0, y: 28 }}
       ref={ref}
-      transition={{ duration: 0.8, ease: revealEase }}
-      viewport={{ once: true, amount: 0.2 }}
-      whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
     >
       <div className="city-media-column">
         <div className="city-media-sticky">
@@ -666,10 +749,16 @@ function CitySection({
             className="city-image"
             loading="lazy"
             src={city.image.src}
-            style={{ y: imageY }}
+            style={shouldReduceMotion ? undefined : { y: imageY, scale: imageScale }}
           />
           <div className="city-image-tint" />
-          <div className="city-image-copy">
+          <motion.div
+            className="city-image-copy"
+            initial={shouldReduceMotion ? undefined : { opacity: 0, y: 40 }}
+            whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          >
             <p className="city-index">{String(index + 5).padStart(2, '0')}</p>
             <h2>{city.label}</h2>
             <p>{city.theme}</p>
@@ -679,196 +768,242 @@ function CitySection({
                 Unsplash
               </a>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       <div className="city-content-column">
-        <ChapterHeader
-          eyebrow={city.label}
-          page={String(index + 5).padStart(2, '0')}
-          title={`${city.label} / ${city.dateRange}`}
-          description={`Утренний золотой час: ${city.goldenHour.am} • Вечерний золотой час: ${city.goldenHour.pm} • база: ${city.base}`}
-        />
+        <ScrollBlock variants={rv}>
+          <ChapterHeader
+            eyebrow={city.label}
+            page={String(index + 5).padStart(2, '0')}
+            title={`${city.label} / ${city.dateRange}`}
+            description={`Утренний золотой час: ${city.goldenHour.am} • Вечерний золотой час: ${city.goldenHour.pm} • база: ${city.base}`}
+          />
+        </ScrollBlock>
 
         {city.suggestedDays && city.suggestedDays.length > 0 && (
-          <div className="suggested-days-section">
-            <p className="mini-label">РЕКОМЕНДОВАННЫЙ МАРШРУТ</p>
-            <div className="suggested-days-grid">
-              {city.suggestedDays.map((day) => (
-                <article key={day.label} className="soft-panel suggested-day-card">
-                  <div className="suggested-day-header">
-                    <h4>{day.label}</h4>
-                    <span className="suggested-day-theme">{day.theme}</span>
-                  </div>
-                  <ul className="suggested-day-flow">
-                    {day.flow.map((item, i) => (
-                      <li key={i}>{item}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
+          <ScrollBlock variants={rv}>
+            <div className="suggested-days-section">
+              <p className="mini-label">РЕКОМЕНДОВАННЫЙ МАРШРУТ</p>
+              <motion.div
+                className="suggested-days-grid"
+                variants={shouldReduceMotion ? undefined : appleStagger}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.1 }}
+              >
+                {city.suggestedDays.map((day) => (
+                  <motion.article key={day.label} className="soft-panel suggested-day-card" variants={appleChild}>
+                    <div className="suggested-day-header">
+                      <h4>{day.label}</h4>
+                      <span className="suggested-day-theme">{day.theme}</span>
+                    </div>
+                    <ul className="suggested-day-flow">
+                      {day.flow.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  </motion.article>
+                ))}
+              </motion.div>
             </div>
-          </div>
+          </ScrollBlock>
         )}
 
-        <div className="city-panel-grid">
-          <GoldenHourPanel title="УТРЕННИЙ СВЕТ" tone="am" items={city.am} />
-          <GoldenHourPanel title="ВЕЧЕРНИЙ СВЕТ" tone="pm" items={city.pm} />
-          <GoldenHourPanel
-            title="КОФЕ / ЕДА / УЖИНЫ"
-            tone="neutral"
-            items={city.dining}
-            wide
-          />
-        </div>
+        <ScrollBlock variants={sc}>
+          <div className="city-panel-grid">
+            <GoldenHourPanel title="УТРЕННИЙ СВЕТ" tone="am" items={city.am} />
+            <GoldenHourPanel title="ВЕЧЕРНИЙ СВЕТ" tone="pm" items={city.pm} />
+            <GoldenHourPanel
+              title="КОФЕ / ЕДА / УЖИНЫ"
+              tone="neutral"
+              items={city.dining}
+              wide
+            />
+          </div>
+        </ScrollBlock>
 
         {city.foodNotes && city.foodNotes.length > 0 && (
-          <div className="food-notes-section">
-            <p className="mini-label">ГАСТРОНОМИЧЕСКИЕ ЗАМЕТКИ</p>
-            <div className="food-notes-grid">
-              {city.foodNotes.map((note) => (
-                <article key={note.title} className="soft-panel food-note-card">
-                  <h4>{note.title}</h4>
-                  <p>{note.body}</p>
-                  {note.priceHint && (
-                    <p className="food-note-price">{note.priceHint}</p>
-                  )}
-                </article>
-              ))}
+          <ScrollBlock variants={rv}>
+            <div className="food-notes-section">
+              <p className="mini-label">ГАСТРОНОМИЧЕСКИЕ ЗАМЕТКИ</p>
+              <div className="food-notes-grid">
+                {city.foodNotes.map((note, i) => (
+                  <ScrollBlock key={note.title} variants={rvf} delay={i * 0.15}>
+                    <article className="soft-panel food-note-card">
+                      <h4>{note.title}</h4>
+                      <p>{note.body}</p>
+                      {note.priceHint && (
+                        <p className="food-note-price">{note.priceHint}</p>
+                      )}
+                    </article>
+                  </ScrollBlock>
+                ))}
+              </div>
             </div>
-          </div>
+          </ScrollBlock>
         )}
 
         {city.photoWalks && city.photoWalks.length > 0 && (
-          <div className="photo-walks-section">
-            <p className="mini-label">ФОТОПРОГУЛКИ</p>
-            <div className="photo-walks-grid">
-              {city.photoWalks.map((walk) => (
-                <article key={walk.title} className="soft-panel photo-walk-card">
-                  <div className="photo-walk-header">
-                    <h4>{walk.title}</h4>
-                    <div className="photo-walk-meta">
-                      <span>{walk.duration}</span>
-                      <span className="photo-walk-time">{walk.bestTime}</span>
-                    </div>
-                  </div>
-                  <ol className="photo-walk-stops">
-                    {walk.stops.map((stop) => (
-                      <li key={stop.spot}>
-                        <strong>{stop.spot}</strong>
-                        <span>{stop.tip}</span>
-                      </li>
-                    ))}
-                  </ol>
-                </article>
-              ))}
+          <ScrollBlock variants={rv}>
+            <div className="photo-walks-section">
+              <p className="mini-label">ФОТОПРОГУЛКИ</p>
+              <div className="photo-walks-grid">
+                {city.photoWalks.map((walk, i) => (
+                  <ScrollBlock key={walk.title} variants={rvf} delay={i * 0.12}>
+                    <article className="soft-panel photo-walk-card">
+                      <div className="photo-walk-header">
+                        <h4>{walk.title}</h4>
+                        <div className="photo-walk-meta">
+                          <span>{walk.duration}</span>
+                          <span className="photo-walk-time">{walk.bestTime}</span>
+                        </div>
+                      </div>
+                      <ol className="photo-walk-stops">
+                        {walk.stops.map((stop) => (
+                          <li key={stop.spot}>
+                            <strong>{stop.spot}</strong>
+                            <span>{stop.tip}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    </article>
+                  </ScrollBlock>
+                ))}
+              </div>
             </div>
-          </div>
+          </ScrollBlock>
         )}
 
         {city.photoInspo && city.photoInspo.length > 0 && (
-          <div className="photo-inspo-section">
-            <p className="mini-label">ВДОХНОВЕНИЕ ДЛЯ СЪЁМОК</p>
-            <div className="photo-inspo-grid">
-              {city.photoInspo.map((inspo) => (
-                <article key={inspo.title} className="soft-panel photo-inspo-card">
-                  <div className="photo-inspo-header">
-                    <h4>{inspo.title}</h4>
-                    <span className="photo-inspo-mood">{inspo.mood}</span>
+          <ScrollBlock variants={rv}>
+            <div className="photo-inspo-section">
+              <p className="mini-label">ВДОХНОВЕНИЕ ДЛЯ СЪЁМОК</p>
+              <div className="photo-inspo-grid">
+                {city.photoInspo.map((inspo, i) => (
+                  <ScrollBlock key={inspo.title} variants={sc} delay={i * 0.18}>
+                    <article className="soft-panel photo-inspo-card">
+                      <div className="photo-inspo-header">
+                        <h4>{inspo.title}</h4>
+                        <span className="photo-inspo-mood">{inspo.mood}</span>
+                      </div>
+                      <ul className="photo-inspo-spots">
+                        {inspo.spots.map((s) => (
+                          <li key={s.location}>
+                            <strong>{s.location}</strong>
+                            <span>{s.idea}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </article>
+                  </ScrollBlock>
+                ))}
+              </div>
+            </div>
+          </ScrollBlock>
+        )}
+
+        {city.sightseeing.length > 0 && (
+          <ScrollBlock variants={rv}>
+            <div className="sightseeing-section">
+              <p className="mini-label">ЧТО ПОСМОТРЕТЬ</p>
+              <motion.div
+                className="sightseeing-grid"
+                variants={shouldReduceMotion ? undefined : appleStagger}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.08 }}
+              >
+                {city.sightseeing.map((cat) => (
+                  <motion.div key={cat.label} className="sightseeing-category" variants={appleChild}>
+                    <h4 className="sightseeing-cat-label">{cat.label}</h4>
+                    <ul className="sightseeing-list">
+                      {cat.spots.map((spot) => (
+                        <li key={spot.name} className="sightseeing-spot">
+                          <strong>{spot.name}</strong>
+                          <span>{spot.description}</span>
+                          {spot.station && (
+                            <small className="sightseeing-station">
+                              {spot.station}
+                            </small>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </ScrollBlock>
+        )}
+
+        {city.mustSee.length > 0 && (
+          <ScrollBlock variants={rv}>
+            <div className="must-see-section">
+              <p className="mini-label">MUST SEE</p>
+              <motion.ol
+                className="must-see-list"
+                variants={shouldReduceMotion ? undefined : appleStagger}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.15 }}
+              >
+                {city.mustSee.map((item) => (
+                  <motion.li key={item.name} className="must-see-item" variants={appleChild}>
+                    <strong>{item.name}</strong>
+                    <span>{item.why}</span>
+                  </motion.li>
+                ))}
+              </motion.ol>
+            </div>
+          </ScrollBlock>
+        )}
+
+        {city.crowdHacks.length > 0 && (
+          <ScrollBlock variants={rvf}>
+            <div className="crowd-hacks-section">
+              <p className="mini-label">КАК ИЗБЕЖАТЬ ТОЛП</p>
+              <ul className="crowd-hacks-list">
+                {city.crowdHacks.map((hack, i) => (
+                  <li key={i} className="crowd-hack-item">
+                    {hack.tip}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </ScrollBlock>
+        )}
+
+        {city.dayTrips && city.dayTrips.length > 0 && (
+          <ScrollBlock variants={sc}>
+            <div className="day-trips-section">
+              <p className="mini-label">ОДНОДНЕВНАЯ ПОЕЗДКА</p>
+              {city.dayTrips.map((trip) => (
+                <article key={trip.destination} className="soft-panel day-trip-card">
+                  <div className="day-trip-header">
+                    <h4>{trip.destination}</h4>
+                    <span className="day-trip-duration">{trip.duration}</span>
                   </div>
-                  <ul className="photo-inspo-spots">
-                    {inspo.spots.map((s) => (
-                      <li key={s.location}>
-                        <strong>{s.location}</strong>
-                        <span>{s.idea}</span>
+                  <ul className="day-trip-highlights">
+                    {trip.highlights.map((h) => (
+                      <li key={h.name}>
+                        <strong>{h.name}</strong>
+                        <span>{h.description}</span>
                       </li>
                     ))}
                   </ul>
                 </article>
               ))}
             </div>
-          </div>
+          </ScrollBlock>
         )}
 
-        {city.sightseeing.length > 0 && (
-          <div className="sightseeing-section">
-            <p className="mini-label">ЧТО ПОСМОТРЕТЬ</p>
-            <div className="sightseeing-grid">
-              {city.sightseeing.map((cat) => (
-                <div key={cat.label} className="sightseeing-category">
-                  <h4 className="sightseeing-cat-label">{cat.label}</h4>
-                  <ul className="sightseeing-list">
-                    {cat.spots.map((spot) => (
-                      <li key={spot.name} className="sightseeing-spot">
-                        <strong>{spot.name}</strong>
-                        <span>{spot.description}</span>
-                        {spot.station && (
-                          <small className="sightseeing-station">
-                            {spot.station}
-                          </small>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {city.mustSee.length > 0 && (
-          <div className="must-see-section">
-            <p className="mini-label">MUST SEE</p>
-            <ol className="must-see-list">
-              {city.mustSee.map((item) => (
-                <li key={item.name} className="must-see-item">
-                  <strong>{item.name}</strong>
-                  <span>{item.why}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        )}
-
-        {city.crowdHacks.length > 0 && (
-          <div className="crowd-hacks-section">
-            <p className="mini-label">КАК ИЗБЕЖАТЬ ТОЛП</p>
-            <ul className="crowd-hacks-list">
-              {city.crowdHacks.map((hack, i) => (
-                <li key={i} className="crowd-hack-item">
-                  {hack.tip}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {city.dayTrips && city.dayTrips.length > 0 && (
-          <div className="day-trips-section">
-            <p className="mini-label">ОДНОДНЕВНАЯ ПОЕЗДКА</p>
-            {city.dayTrips.map((trip) => (
-              <article key={trip.destination} className="soft-panel day-trip-card">
-                <div className="day-trip-header">
-                  <h4>{trip.destination}</h4>
-                  <span className="day-trip-duration">{trip.duration}</span>
-                </div>
-                <ul className="day-trip-highlights">
-                  {trip.highlights.map((h) => (
-                    <li key={h.name}>
-                      <strong>{h.name}</strong>
-                      <span>{h.description}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        )}
-
-        <p className="city-note">{city.note}</p>
+        <ScrollBlock variants={rvf}>
+          <p className="city-note">{city.note}</p>
+        </ScrollBlock>
       </div>
-    </motion.section>
+    </section>
   )
 }
 

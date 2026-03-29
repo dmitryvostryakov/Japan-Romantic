@@ -3,6 +3,16 @@
   overflow-x: clip;
 }
 
+/* ── Apple-style smooth scroll ────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+.city-content-column > * {
+  will-change: transform, opacity;
+}
+
 .site-chrome {
   position: fixed;
   inset: 0 0 auto;
