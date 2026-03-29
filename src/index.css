@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+:root {
+  --paper: #faf7f2;
+  --paper-deep: #f0ebe3;
+  --ink: #1a1714;
+  --muted: #9a8b7a;
+  --muted-strong: #6d5f50;
+  --line: rgba(140, 120, 95, 0.18);
+  --vermilion: #c4503c;
+  --stone: #cdbba7;
+  --soft-shadow: 0 1px 0 var(--line);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', 'Helvetica Neue', sans-serif;
+  --mono: 'DM Sans', monospace;
+  --section-gap: clamp(4rem, 8vw, 7rem);
+  --content-width: 68rem;
+  --content-pad: clamp(1.25rem, 4vw, 3rem);
+
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+#root {
+  position: relative;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+dt,
+.site-mark,
+.mini-label,
+.hero-route,
+.tabular {
+  font-feature-settings: 'liga' 1, 'kern' 1;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+p,
+li,
+dd,
+td,
+th,
+small,
+span,
+a,
+button {
+  font-family: var(--sans);
+}
+
+p,
+ul,
+ol,
+dl {
+  margin-block: 0;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(196, 80, 60, 0.5);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: rgba(196, 80, 60, 0.14);
+}
+
+/* Editorial divider */
+hr,
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: var(--section-gap) auto;
+  max-width: var(--content-width);
+}
+
+@media (max-width: 720px) {
+  :root {
+    font-size: 16px;
+  }
+}

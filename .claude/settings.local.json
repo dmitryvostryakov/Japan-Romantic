@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "WebSearch",
+      "WebFetch(domain:unsplash.com)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_evaluate",
+      "Bash(curl -sL -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" https://unsplash.com/photos/osaka-castle-reflected-in-the-calm-water-of-a-pond-s6VthJb4lAc)",
+      "Bash(curl -sL -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" https://unsplash.com/photos/black-pagoda-temple-during-daytime-jZyQV3I2rT4)",
+      "Bash(curl -sL -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" https://unsplash.com/photos/lm7CYifb5r4)",
+      "Bash(curl -sL -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" https://unsplash.com/photos/a-tall-clock-tower-towering-over-a-city-w_YJh3JNcaw)",
+      "Bash(curl -sL -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" https://unsplash.com/photos/a-large-building-in-the-middle-of-a-city-RnbQSysWOhY)",
+      "Bash(curl -sL -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" https://unsplash.com/photos/1u0B0akEQx0)",
+      "Bash(curl -sL -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" https://unsplash.com/photos/silhouette-photo-of-pagoda-uztw2giebSc)",
+      "Bash(curl -sL -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" https://unsplash.com/photos/view-of-a-river-in-kyoto-japan-tImkUc4d0No)",
+      "Bash(curl -sL -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" https://unsplash.com/photos/people-standing-under-yellow-leaf-tree-during-daytime-3_HVOMLJJ_I)",
+      "Bash(curl -sL -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" https://unsplash.com/photos/a-stone-street-lined-with-traditional-japanese-buildings-n4Dl8szrGJU)",
+      "Bash(curl -sL -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36\" https://unsplash.com/photos/osaka-castle-reflected-in-the-calm-water-of-a-pond-s6VthJb4lAc)",
+      "Bash(curl -sL -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36\" https://unsplash.com/photos/black-pagoda-temple-during-daytime-jZyQV3I2rT4)",
+      "Bash(curl -sL -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36\" https://unsplash.com/photos/lm7CYifb5r4)",
+      "Bash(curl -sL -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36\" https://unsplash.com/photos/a-tall-clock-tower-towering-over-a-city-w_YJh3JNcaw)",
+      "Bash(npm run:*)",
+      "Bash(brew install:*)"
+    ]
+  }
+}

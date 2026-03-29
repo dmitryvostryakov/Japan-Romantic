@@ -1,0 +1,91 @@
+{
+  "lastChecked": "2026-03-28T06:00:00Z",
+  "hotels": {
+    "aoyama-grand": {
+      "available": true,
+      "price": "¥191 337 / 4N",
+      "url": "https://aoyamagrand.com"
+    },
+    "hotel-seiryu": {
+      "available": true,
+      "price": "¥348 000 / 3N",
+      "url": "https://www.princehotels.com"
+    },
+    "zentis-osaka": {
+      "available": true,
+      "price": "¥126 011 / 2N",
+      "url": "https://zentishotels.com"
+    },
+    "sowaka": {
+      "available": true,
+      "price": "¥527 041 / 3N",
+      "url": "https://sowaka.com"
+    },
+    "the-shinmonzen": {
+      "available": false,
+      "price": "¥571 438–¥711 438 / 3N",
+      "url": "https://theshinmonzen.com",
+      "nextSlot": "2026-05-12"
+    },
+    "trunk": {
+      "available": true,
+      "price": "¥160 769 / 4N",
+      "url": "https://trunk-hotel.com"
+    }
+  },
+  "restaurants": {
+    "rossi": {
+      "available": true,
+      "price": "¥28 600 / 2 pax",
+      "url": "https://www.tablecheck.com"
+    },
+    "gion-loka": {
+      "available": true,
+      "price": "¥48 000 / 2 pax",
+      "url": "https://www.tablecheck.com"
+    },
+    "jean-georges": {
+      "available": true,
+      "price": "¥53 000 / 2 pax",
+      "url": "https://www.tablecheck.com"
+    },
+    "upstairz": {
+      "available": true,
+      "price": "¥30 000 / 2 pax",
+      "url": "https://www.tablecheck.com"
+    },
+    "blue-bottle-studio": {
+      "available": false,
+      "price": "¥17 820 / 2 pax",
+      "url": "https://store.bluebottlecoffee.jp",
+      "nextSlot": "2026-05-15"
+    },
+    "camellia": {
+      "available": true,
+      "price": "¥16 000 / 2 pax",
+      "url": "https://www.tea-kyoto.com"
+    }
+  },
+  "activities": {
+    "shibuya-sky": {
+      "available": true,
+      "price": "¥4 400 / 2 pax",
+      "url": "https://www.shibuya-scramble-square.com"
+    },
+    "teamlab-planets": {
+      "available": true,
+      "price": "¥8 400 / 2 pax",
+      "url": "https://teamlabplanets.dmm.com"
+    },
+    "umeda-sky": {
+      "available": true,
+      "price": "¥3 000 / 2 pax",
+      "url": "https://www.kuchu-teien.com"
+    },
+    "nakanoshima-cruise": {
+      "available": true,
+      "price": "¥2 400 / 2 pax",
+      "url": "https://suijo-bus.osaka"
+    }
+  }
+}
