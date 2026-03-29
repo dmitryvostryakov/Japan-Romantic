@@ -880,26 +880,64 @@ function CitySection({
           <ScrollBlock variants={rv}>
             <div className="photo-inspo-section">
               <p className="mini-label">ВДОХНОВЕНИЕ ДЛЯ СЪЁМОК</p>
-              <div className="photo-inspo-grid">
-                {city.photoInspo.map((inspo, i) => (
-                  <ScrollBlock key={inspo.title} variants={sc} delay={i * 0.18}>
-                    <article className="soft-panel photo-inspo-card">
-                      <div className="photo-inspo-header">
-                        <h4>{inspo.title}</h4>
-                        <span className="photo-inspo-mood">{inspo.mood}</span>
-                      </div>
-                      <ul className="photo-inspo-spots">
-                        {inspo.spots.map((s) => (
-                          <li key={s.location}>
-                            <strong>{s.location}</strong>
-                            <span>{s.idea}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </article>
-                  </ScrollBlock>
-                ))}
-              </div>
+              {city.photoInspo.map((inspo, i) => (
+                <ScrollBlock key={inspo.title} variants={sc} delay={i * 0.18}>
+                  <div className="photo-inspo-theme">
+                    <div className="photo-inspo-theme-header">
+                      <h4>{inspo.title}</h4>
+                      <span className="photo-inspo-mood">{inspo.mood}</span>
+                    </div>
+                    <div className="photo-inspo-gallery">
+                      {inspo.spots.map((s, si) => (
+                        <ScrollBlock
+                          key={s.location}
+                          variants={sc}
+                          delay={si * 0.1}
+                        >
+                          <figure className="photo-inspo-figure">
+                            {s.image && (
+                              <div className="photo-inspo-img-wrap">
+                                <img
+                                  src={s.image.src}
+                                  alt={s.image.alt}
+                                  loading="lazy"
+                                  decoding="async"
+                                />
+                                <div className="photo-inspo-overlay">
+                                  <span className="photo-inspo-loc">
+                                    {s.location}
+                                  </span>
+                                  <span className="photo-inspo-idea">
+                                    {s.idea}
+                                  </span>
+                                </div>
+                              </div>
+                            )}
+                            <figcaption className="photo-inspo-caption">
+                              {!s.image && (
+                                <>
+                                  <strong>{s.location}</strong>
+                                  <span>{s.idea}</span>
+                                </>
+                              )}
+                              {s.image && (
+                                <a
+                                  href={s.image.creditUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="photo-inspo-credit"
+                                >
+                                  📷 {s.image.creditLabel}
+                                </a>
+                              )}
+                            </figcaption>
+                          </figure>
+                        </ScrollBlock>
+                      ))}
+                    </div>
+                  </div>
+                </ScrollBlock>
+              ))}
             </div>
           </ScrollBlock>
         )}
