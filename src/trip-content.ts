@@ -1111,6 +1111,7 @@ export type CityActivity = {
   id: string
   title: string
   description: string
+  jpy?: string
 }
 
 export type CityBuilderData = {
@@ -1145,8 +1146,8 @@ export const builderCities: CityBuilderData[] = [
       },
     ],
     activities: [
-      { id: 'act-shibuya-sky', title: 'Shibuya Sky — закатный слот', description: 'бронируйте за 30 мин до заката; лучшие силуэтные кадры' },
-      { id: 'act-teamlab', title: 'teamLab Planets', description: 'вход по времени; лучше утром, потом вода и закат' },
+      { id: 'act-shibuya-sky', title: 'Shibuya Sky — закатный слот', description: 'бронируйте за 30 мин до заката; лучшие силуэтные кадры', jpy: '¥4 400' },
+      { id: 'act-teamlab', title: 'teamLab Planets', description: 'вход по времени; лучше утром, потом вода и закат', jpy: '¥6 800' },
       { id: 'act-aoyama-walk', title: 'Aoyama / Omotesando backstreets', description: 'утренние editorial-кадры без толпы' },
       { id: 'act-marunouchi', title: 'Marunouchi Station', description: 'симметрия, красный кирпич — дорого смотрится даже в простом' },
       { id: 'act-shiba', title: 'Shiba Park + Tokyo Tower', description: 'спокойный знаковый городской кадр без суеты' },
@@ -1183,11 +1184,11 @@ export const builderCities: CityBuilderData[] = [
       },
     ],
     activities: [
-      { id: 'act-camellia', title: 'Camellia — приватный чай', description: 'сильная романтическая сцена; бронируйте заранее' },
+      { id: 'act-camellia', title: 'Camellia — приватный чай', description: 'сильная романтическая сцена; бронируйте заранее', jpy: '¥16 000' },
       { id: 'act-yasaka', title: 'Yasaka Pagoda на рассвете', description: 'пустые улочки, кимоно, камень — лучшие кадры Киото' },
       { id: 'act-shirakawa', title: 'Shirakawa canal вечером', description: 'канал, фонари, ива — классический романтический Киото' },
       { id: 'act-bamboo', title: 'Бамбуковая роща Арасияма', description: 'только на рассвете, иначе — толпа' },
-      { id: 'act-blue-bottle', title: 'Blue Bottle Studio', description: 'кофейный курс по брони — только если цените ритуал' },
+      { id: 'act-blue-bottle', title: 'Blue Bottle Studio', description: 'кофейный курс по брони — только если цените ритуал', jpy: '¥17 820' },
     ],
   },
   {
@@ -1205,8 +1206,8 @@ export const builderCities: CityBuilderData[] = [
       },
     ],
     activities: [
-      { id: 'act-umeda', title: 'Umeda Sky — закат', description: 'лёгкий закатный кадр с горизонтом Осаки' },
-      { id: 'act-cruise', title: 'Nakanoshima Cruise', description: 'мягкое романтическое завершение вечера на воде' },
+      { id: 'act-umeda', title: 'Umeda Sky — закат', description: 'лёгкий закатный кадр с горизонтом Осаки', jpy: '¥3 000' },
+      { id: 'act-cruise', title: 'Nakanoshima Cruise', description: 'мягкое романтическое завершение вечера на воде', jpy: '¥3 800' },
       { id: 'act-dotonbori', title: 'Dotonbori ночью', description: 'неон, лодки, стрит-фуд — чистая энергия Осаки' },
       { id: 'act-kuromon', title: 'Kuromon Market', description: 'финальный гастро-маршрут; выбирайте, а не объедайтесь' },
     ],

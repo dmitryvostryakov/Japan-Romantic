@@ -1584,12 +1584,47 @@
   text-align: center;
 }
 
+.builder-city-subtotal {
+  margin: 1rem 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
 .builder-grand-total {
   margin: 0.6rem 0 0;
   font-family: var(--serif);
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-variant-numeric: tabular-nums;
   color: var(--ink);
+}
+
+.builder-grand-total-jpy {
+  margin: 0.25rem 0 0;
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-strong);
+}
+
+.builder-total-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+  color: var(--muted-strong);
+}
+
+.builder-fx-note {
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
 }
 
 @media (max-width: 640px) {

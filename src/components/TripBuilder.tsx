@@ -7,13 +7,22 @@ const STEPS = [...builderCities.map((c) => c.label), 'Сводка'] as const
 const FX_RATE = 51.52 / 100 // ¥100 = ₽51.52
 
 function parseJpy(raw: string): number {
+  // Handle ranges like "¥621 438–¥761 438" — take the lower bound
   const match = raw.replace(/\s/g, '').match(/¥([\d,]+)/)
   if (!match) return 0
   return Number(match[1].replace(/,/g, ''))
 }
 
+function jpyToRub(jpy: number): number {
+  return Math.round(jpy * FX_RATE)
+}
+
 function fmt(n: number): string {
   return n.toLocaleString('ru-RU')
+}
+
+function fmtRub(jpyStr: string): string {
+  return `₽${fmt(jpyToRub(parseJpy(jpyStr)))}`
 }
 
 const stepVariants = {
@@ -82,8 +91,15 @@ export function TripBuilder() {
 
   const allChosenRestaurants = reservations.filter((r) => selectedRestaurants.has(r.id))
   const restaurantsJpy = allChosenRestaurants.reduce((sum, r) => sum + parseJpy(r.jpy), 0)
-  const totalJpy = hotelsJpy + restaurantsJpy
-  const totalRub = Math.round(totalJpy * FX_RATE)
+
+  const activitiesJpy = builderCities.reduce((sum, city) => {
+    return sum + city.activities
+      .filter((a) => selectedActivities.has(a.id) && a.jpy)
+      .reduce((s, a) => s + parseJpy(a.jpy!), 0)
+  }, 0)
+
+  const totalJpy = hotelsJpy + restaurantsJpy + activitiesJpy
+  const totalRub = jpyToRub(totalJpy)
 
   const isCityStep = step < builderCities.length
   const isSummary = step === builderCities.length
@@ -142,7 +158,7 @@ export function TripBuilder() {
                           <p className="builder-card-venue">{hotel.name}</p>
                           <p className="builder-card-mood">{hotel.mood}</p>
                           <p className="builder-card-total">
-                            {hotel.jpy} / {hotel.nights}N
+                            {hotel.jpy} / {fmtRub(hotel.jpy)} / {hotel.nights}N
                           </p>
                         </div>
                       </button>
@@ -167,7 +183,7 @@ export function TripBuilder() {
                               <p className="builder-card-venue">{r.venue}</p>
                               <p className="builder-card-mood">{r.what}</p>
                             </div>
-                            <p className="builder-card-total">{r.jpy}</p>
+                            <p className="builder-card-total">{r.jpy} / {fmtRub(r.jpy)}</p>
                           </div>
                         </button>
                       ))}
@@ -186,8 +202,15 @@ export function TripBuilder() {
                         onClick={() => toggleActivity(a.id)}
                         type="button"
                       >
-                        <p className="builder-card-venue">{a.title}</p>
-                        <p className="builder-card-mood">{a.description}</p>
+                        <div className="builder-card-row">
+                          <div>
+                            <p className="builder-card-venue">{a.title}</p>
+                            <p className="builder-card-mood">{a.description}</p>
+                          </div>
+                          {a.jpy && (
+                            <p className="builder-card-total">{a.jpy} / {fmtRub(a.jpy)}</p>
+                          )}
+                        </div>
                       </button>
                     ))}
                   </div>
@@ -204,6 +227,11 @@ export function TripBuilder() {
                 const cityActs = city.activities.filter((a) =>
                   selectedActivities.has(a.id),
                 )
+
+                const cityHotelJpy = hotel ? parseJpy(hotel.jpy) : 0
+                const cityRestJpy = cityRests.reduce((s, r) => s + parseJpy(r.jpy), 0)
+                const cityActJpy = cityActs.filter((a) => a.jpy).reduce((s, a) => s + parseJpy(a.jpy!), 0)
+                const cityTotalJpy = cityHotelJpy + cityRestJpy + cityActJpy
 
                 return (
                   <article key={city.slug} className="soft-panel">
@@ -222,7 +250,7 @@ export function TripBuilder() {
                         <div>
                           <h3>{hotel.name}</h3>
                           <p className="builder-card-mood">
-                            {hotel.nights}N — {hotel.jpy}
+                            {hotel.nights}N — {hotel.jpy} / {fmtRub(hotel.jpy)}
                           </p>
                         </div>
                       </div>
@@ -233,7 +261,7 @@ export function TripBuilder() {
                         {cityRests.map((r) => (
                           <li key={r.id}>
                             <span>{r.venue} — {r.what}</span>
-                            <span className="tabular">{r.jpy}</span>
+                            <span className="tabular">{r.jpy} / {fmtRub(r.jpy)}</span>
                           </li>
                         ))}
                       </ul>
@@ -244,21 +272,34 @@ export function TripBuilder() {
                         {cityActs.map((a) => (
                           <li key={a.id}>
                             <span>{a.title}</span>
+                            {a.jpy && <span className="tabular">{a.jpy} / {fmtRub(a.jpy)}</span>}
                           </li>
                         ))}
                       </ul>
                     )}
+
+                    <p className="builder-city-subtotal">
+                      Итого {city.label}: ¥{fmt(cityTotalJpy)} / ₽{fmt(jpyToRub(cityTotalJpy))}
+                    </p>
                   </article>
                 )
               })}
 
               <article className="soft-panel builder-total-panel">
-                <p className="mini-label">ИТОГО</p>
+                <p className="mini-label">ИТОГО ЗА ПОЕЗДКУ</p>
                 <p className="builder-grand-total">
-                  ¥{fmt(totalJpy)} / ₽{fmt(totalRub)}
+                  ₽{fmt(totalRub)}
                 </p>
-                <p className="builder-card-mood">
-                  Отели ¥{fmt(hotelsJpy)} + рестораны ¥{fmt(restaurantsJpy)}
+                <p className="builder-grand-total-jpy">
+                  ¥{fmt(totalJpy)}
+                </p>
+                <div className="builder-total-breakdown">
+                  <span>Отели: ¥{fmt(hotelsJpy)} / ₽{fmt(jpyToRub(hotelsJpy))}</span>
+                  <span>Рестораны: ¥{fmt(restaurantsJpy)} / ₽{fmt(jpyToRub(restaurantsJpy))}</span>
+                  <span>Активности: ¥{fmt(activitiesJpy)} / ₽{fmt(jpyToRub(activitiesJpy))}</span>
+                </div>
+                <p className="builder-fx-note">
+                  Курс: ¥100 = ₽51.52
                 </p>
               </article>
             </div>
