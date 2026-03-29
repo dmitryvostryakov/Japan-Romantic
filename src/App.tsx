@@ -705,6 +705,33 @@ function CitySection({
           </div>
         )}
 
+        {city.mustSee.length > 0 && (
+          <div className="must-see-section">
+            <p className="mini-label">MUST SEE</p>
+            <ol className="must-see-list">
+              {city.mustSee.map((item) => (
+                <li key={item.name} className="must-see-item">
+                  <strong>{item.name}</strong>
+                  <span>{item.why}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+
+        {city.crowdHacks.length > 0 && (
+          <div className="crowd-hacks-section">
+            <p className="mini-label">КАК ИЗБЕЖАТЬ ТОЛП</p>
+            <ul className="crowd-hacks-list">
+              {city.crowdHacks.map((hack, i) => (
+                <li key={i} className="crowd-hack-item">
+                  {hack.tip}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <p className="city-note">{city.note}</p>
       </div>
     </motion.section>
