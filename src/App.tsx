@@ -1153,6 +1153,63 @@ function AfterDarkSection({
             </motion.article>
           ))}
         </div>
+
+        {afterDark.inspoGallery && (
+          <div className="after-dark-inspo">
+            <div className="after-dark-inspo-header">
+              <p className="mini-label after-dark-label">VISUAL REFERENCE</p>
+              <p className="after-dark-inspo-tagline">
+                идеи для приватных кадров — настроение, свет, детали
+              </p>
+            </div>
+            {afterDark.inspoGallery.map((cat) => (
+              <motion.div
+                key={cat.category}
+                className="after-dark-inspo-category"
+                initial={shouldReduceMotion ? undefined : { opacity: 0, y: 24 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                viewport={{ once: true, amount: 0.15 }}
+                whileInView={
+                  shouldReduceMotion ? undefined : { opacity: 1, y: 0 }
+                }
+              >
+                <div className="after-dark-inspo-cat-header">
+                  <span className="after-dark-inspo-tag">{cat.category}</span>
+                  <span className="after-dark-inspo-cat-mood">{cat.mood}</span>
+                </div>
+                <div className="after-dark-inspo-masonry">
+                  {cat.shots.map((shot) => (
+                    <figure key={shot.caption} className="after-dark-inspo-fig">
+                      <div className="after-dark-inspo-img-wrap">
+                        <img
+                          src={shot.image.src}
+                          alt={shot.image.alt}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <div className="after-dark-inspo-grain" />
+                        <div className="after-dark-inspo-hover">
+                          <span className="after-dark-inspo-cap">{shot.caption}</span>
+                          <span className="after-dark-inspo-note">{shot.note}</span>
+                        </div>
+                      </div>
+                      <figcaption className="after-dark-inspo-credit">
+                        <span>{shot.caption}</span>
+                        <a
+                          href={shot.image.creditUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {shot.image.creditLabel}
+                        </a>
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )
