@@ -927,20 +927,23 @@ function CitySection({
         {city.photoInspo && city.photoInspo.length > 0 && (
           <ScrollBlock variants={rv}>
             <div className="photo-inspo-section">
-              <p className="mini-label">ВДОХНОВЕНИЕ ДЛЯ СЪЁМОК</p>
+              <div className="photo-inspo-section-header">
+                <p className="mini-label">ВДОХНОВЕНИЕ ДЛЯ СЪЁМОК</p>
+                <p className="photo-inspo-tagline">mood board / reference shots</p>
+              </div>
               {city.photoInspo.map((inspo, i) => (
                 <ScrollBlock key={inspo.title} variants={sc} delay={i * 0.18}>
                   <div className="photo-inspo-theme">
                     <div className="photo-inspo-theme-header">
-                      <h4>{inspo.title}</h4>
+                      <span className="photo-inspo-theme-tag">{inspo.title}</span>
                       <span className="photo-inspo-mood">{inspo.mood}</span>
                     </div>
-                    <div className="photo-inspo-gallery">
+                    <div className="photo-inspo-masonry">
                       {inspo.spots.map((s, si) => (
                         <ScrollBlock
                           key={s.location}
                           variants={sc}
-                          delay={si * 0.1}
+                          delay={si * 0.08}
                         >
                           <figure className="photo-inspo-figure">
                             {s.image && (
@@ -951,6 +954,7 @@ function CitySection({
                                   loading="lazy"
                                   decoding="async"
                                 />
+                                <div className="photo-inspo-grain" />
                                 <div className="photo-inspo-overlay">
                                   <span className="photo-inspo-loc">
                                     {s.location}
@@ -969,14 +973,17 @@ function CitySection({
                                 </>
                               )}
                               {s.image && (
-                                <a
-                                  href={s.image.creditUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="photo-inspo-credit"
-                                >
-                                  📷 {s.image.creditLabel}
-                                </a>
+                                <span className="photo-inspo-credit-line">
+                                  <span className="photo-inspo-spot-name">{s.location}</span>
+                                  <a
+                                    href={s.image.creditUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="photo-inspo-credit"
+                                  >
+                                    {s.image.creditLabel}
+                                  </a>
+                                </span>
                               )}
                             </figcaption>
                           </figure>

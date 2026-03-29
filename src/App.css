@@ -1996,14 +1996,51 @@ html {
   color: var(--ink-soft, rgba(20, 17, 14, 0.72));
 }
 
-/* ── Photo Inspiration Gallery ────────────────────────────── */
+/* ── Photo Inspiration — Instagram Fashion Vibe ──────────── */
 
 .photo-inspo-section {
   margin-top: 2.5rem;
+  padding: 3rem clamp(1rem, 3vw, 2rem);
+  background: #0c0a08;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-inspo-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 30% 90%, rgba(196, 80, 60, 0.06), transparent),
+    radial-gradient(ellipse 50% 40% at 80% 10%, rgba(140, 100, 70, 0.04), transparent);
+  pointer-events: none;
+}
+
+.photo-inspo-section-header {
+  position: relative;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.photo-inspo-section .mini-label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.photo-inspo-tagline {
+  margin: 0.3rem 0 0;
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.02em;
 }
 
 .photo-inspo-theme {
-  margin-bottom: 2.5rem;
+  position: relative;
+  margin-bottom: 3rem;
 }
 
 .photo-inspo-theme:last-child {
@@ -2011,75 +2048,92 @@ html {
 }
 
 .photo-inspo-theme-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
   margin-bottom: 1.25rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 2px solid var(--vermilion);
 }
 
-.photo-inspo-theme-header h4 {
-  font-family: var(--font-body);
-  font-size: 0.82rem;
+.photo-inspo-theme-tag {
+  font-family: var(--sans);
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  margin: 0 0 0.2rem;
+  color: var(--vermilion);
+  background: rgba(196, 80, 60, 0.12);
+  padding: 0.3rem 0.7rem;
+  border-radius: 2px;
 }
 
 .photo-inspo-mood {
-  font-family: var(--font-display);
-  font-size: 0.9rem;
+  font-family: var(--serif);
+  font-size: 0.92rem;
   font-style: italic;
-  color: var(--ink-soft, rgba(20, 17, 14, 0.6));
+  color: rgba(255, 255, 255, 0.4);
 }
 
-.photo-inspo-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
+/* Masonry via CSS columns */
+.photo-inspo-masonry {
+  columns: 3;
+  column-gap: 0.75rem;
 }
 
 .photo-inspo-figure {
-  margin: 0;
-  border-radius: 6px;
+  margin: 0 0 0.75rem;
+  break-inside: avoid;
+  border-radius: 3px;
   overflow: hidden;
-  background: rgba(20, 17, 14, 0.03);
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .photo-inspo-img-wrap {
   position: relative;
-  aspect-ratio: 3 / 4;
   overflow: hidden;
 }
 
 .photo-inspo-img-wrap img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: contrast(1.04) saturate(0.92);
 }
 
 .photo-inspo-figure:hover .photo-inspo-img-wrap img {
-  transform: scale(1.05);
-  filter: brightness(0.85);
+  transform: scale(1.06);
+  filter: contrast(1.08) saturate(0.88) brightness(0.92);
 }
 
+/* Film grain overlay */
+.photo-inspo-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+}
+
+/* Hover overlay */
 .photo-inspo-overlay {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 1rem;
+  padding: 1rem 0.85rem;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.65) 0%,
-    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.08) 55%,
     transparent 100%
   );
   opacity: 0;
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .photo-inspo-figure:hover .photo-inspo-overlay {
@@ -2087,48 +2141,67 @@ html {
 }
 
 .photo-inspo-loc {
-  font-family: var(--font-body);
-  font-size: 0.82rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #fff;
 }
 
 .photo-inspo-idea {
-  font-family: var(--font-display);
-  font-size: 0.88rem;
+  font-family: var(--serif);
+  font-size: 0.84rem;
   font-style: italic;
-  color: rgba(255, 255, 255, 0.88);
-  margin-top: 0.2rem;
-  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.78);
+  margin-top: 0.25rem;
+  line-height: 1.35;
 }
 
+/* Caption below image */
 .photo-inspo-caption {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  padding: 0.65rem 0.75rem;
+  padding: 0.35rem 0.5rem 0.4rem;
 }
 
 .photo-inspo-caption strong {
-  font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-family: var(--sans);
+  font-size: 0.74rem;
   font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .photo-inspo-caption span {
-  font-size: 0.76rem;
-  line-height: 1.45;
-  color: var(--ink-soft, rgba(20, 17, 14, 0.65));
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.photo-inspo-credit-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.photo-inspo-spot-name {
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
 }
 
 .photo-inspo-credit {
-  font-size: 0.68rem;
-  color: var(--ink-soft, rgba(20, 17, 14, 0.4));
+  font-size: 0.62rem;
+  color: rgba(255, 255, 255, 0.25);
   text-decoration: none;
-  margin-top: 0.15rem;
   transition: color 0.2s;
+  white-space: nowrap;
 }
 
 .photo-inspo-credit:hover {
@@ -2234,13 +2307,7 @@ html {
   color: var(--muted-strong);
 }
 
-[data-theme='dark'] .photo-inspo-figure {
-  background: rgba(255, 255, 255, 0.04);
-}
-
-[data-theme='dark'] .photo-inspo-credit {
-  color: var(--muted);
-}
+/* Photo inspo section is always dark — no overrides needed */
 
 /* Builder section */
 [data-theme='dark'] .builder-category {
@@ -2356,16 +2423,23 @@ html {
     gap: 0.25rem;
   }
 
-  .photo-inspo-gallery {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+  .photo-inspo-masonry {
+    columns: 2;
+    column-gap: 0.5rem;
+  }
+
+  .photo-inspo-figure {
+    margin-bottom: 0.5rem;
   }
 
   .photo-inspo-overlay {
     opacity: 1;
   }
 
-  .photo-inspo-caption {
-    padding: 0.5rem 0.6rem;
+  .photo-inspo-section {
+    padding: 2rem 1rem;
+    border-radius: 0;
+    margin-left: calc(-1 * var(--content-pad, 1.25rem));
+    margin-right: calc(-1 * var(--content-pad, 1.25rem));
   }
 }
