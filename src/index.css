@@ -9,6 +9,7 @@
   --line: rgba(140, 120, 95, 0.18);
   --vermilion: #c4503c;
   --stone: #cdbba7;
+  --ink-soft: rgba(20, 17, 14, 0.65);
   --soft-shadow: 0 1px 0 var(--line);
   --serif: 'Cormorant Garamond', Georgia, serif;
   --sans: 'DM Sans', 'Helvetica Neue', sans-serif;
@@ -124,6 +125,35 @@ hr,
   border-top: 1px solid var(--line);
   margin: var(--section-gap) auto;
   max-width: var(--content-width);
+}
+
+/* ── Dark Mode ──────────────────────────────────────────── */
+
+[data-theme='dark'] {
+  --paper: #141210;
+  --paper-deep: #1a1816;
+  --ink: #ece7df;
+  --muted: #8a7d6e;
+  --muted-strong: #b0a494;
+  --line: rgba(180, 160, 130, 0.14);
+  --vermilion: #e0614c;
+  --stone: #4a3e34;
+  --ink-soft: rgba(236, 231, 223, 0.55);
+  --soft-shadow: 0 1px 0 var(--line);
+
+  color-scheme: dark;
+}
+
+html[data-theme] {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+[data-theme='dark'] ::selection {
+  background: rgba(224, 97, 76, 0.22);
+}
+
+[data-theme='dark'] :focus-visible {
+  outline-color: rgba(224, 97, 76, 0.5);
 }
 
 @media (max-width: 720px) {
