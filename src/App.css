@@ -642,6 +642,85 @@
   font-size: 1rem;
 }
 
+/* ── Sightseeing section inside city ───────────────────────── */
+
+.sightseeing-section {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.sightseeing-section > .mini-label {
+  margin-bottom: 1.5rem;
+}
+
+.sightseeing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 1.5rem;
+}
+
+.sightseeing-category {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.sightseeing-cat-label {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.sightseeing-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.sightseeing-spot {
+  display: grid;
+  gap: 0.15rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.sightseeing-spot:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.sightseeing-spot strong {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.sightseeing-spot span {
+  font-size: 0.9rem;
+  color: var(--muted-strong);
+  line-height: 1.45;
+}
+
+.sightseeing-station {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-top: 0.1rem;
+}
+
+@media (max-width: 820px) {
+  .sightseeing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .capsule-layout {
   grid-template-columns: minmax(18rem, 0.92fr) minmax(0, 1.08fr);
   align-items: start;

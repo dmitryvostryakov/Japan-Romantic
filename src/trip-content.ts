@@ -15,6 +15,17 @@ export type CityMoment = {
   image?: ImageAsset
 }
 
+export type SightseeingSpot = {
+  name: string
+  description: string
+  station?: string
+}
+
+export type SightseeingCategory = {
+  label: string
+  spots: SightseeingSpot[]
+}
+
 export type CityChapter = {
   slug: string
   label: string
@@ -29,6 +40,7 @@ export type CityChapter = {
   am: CityMoment[]
   pm: CityMoment[]
   dining: CityMoment[]
+  sightseeing: SightseeingCategory[]
   note: string
 }
 
@@ -438,6 +450,54 @@ export const cities: CityChapter[] = [
           'план на дождливый день: кофе + интерьеры, а не точка для утренних фото',
       },
     ],
+    sightseeing: [
+      {
+        label: 'Храмы и святилища',
+        spots: [
+          { name: 'Meiji Jingū', description: 'главное синтоистское святилище Токио — лесная тишина посреди мегаполиса', station: 'Meiji-jingūmae' },
+          { name: 'Sensō-ji', description: 'древнейший храм города; утром до 08:00 — без толпы, красные фонари и дым благовоний', station: 'Asakusa' },
+          { name: 'Nezu Shrine', description: 'тысячи тории как в Fushimi, но без туристов; в мае цветут азалии', station: 'Nezu' },
+        ],
+      },
+      {
+        label: 'Парки и сады',
+        spots: [
+          { name: 'Shinjuku Gyoen', description: 'лучший парк для парных фото — три стиля сада: японский, английский, французский', station: 'Shinjuku-gyoenmae' },
+          { name: 'Hamarikyu Gardens', description: 'сад на воде у Токийского залива; чайный домик на пруду, небоскрёбы за деревьями', station: 'Shiodome' },
+        ],
+      },
+      {
+        label: 'Районы для прогулок',
+        spots: [
+          { name: 'Daikanyama / Nakameguro', description: 'кофейни, винтажные бутики, канал; самый стильный район для неспешной прогулки', station: 'Daikanyama' },
+          { name: 'Yanaka', description: 'старый Токио: деревянные дома, коты, храмы, ремесленные лавки', station: 'Nippori' },
+          { name: 'Shimokitazawa', description: 'андеграунд-район: винтаж, пластинки, крафтовые бары и маленькие театры', station: 'Shimokitazawa' },
+        ],
+      },
+      {
+        label: 'Виды и смотровые',
+        spots: [
+          { name: 'Shibuya Sky', description: 'открытая площадка на 230 м — лучший панорамный закат в городе', station: 'Shibuya' },
+          { name: 'Tokyo Skytree', description: '634 м — самая высокая башня; утренние слоты самые спокойные', station: 'Oshiage' },
+          { name: 'Mori Art Museum', description: 'смотровая + современное искусство; Roppongi Hills, 52-й этаж', station: 'Roppongi' },
+        ],
+      },
+      {
+        label: 'Шопинг и рынки',
+        spots: [
+          { name: 'Tsukiji Outer Market', description: 'уличная еда и свежайшие морепродукты; приходите после 09:00', station: 'Tsukiji' },
+          { name: 'Ginza', description: 'люксовый шопинг: GINZA SIX, Dover Street Market, Muji flagship', station: 'Ginza' },
+          { name: 'Omotesando', description: 'архитектурная авеню моды: Tadao Ando, SANAA, Kengo Kuma', station: 'Omotesandō' },
+        ],
+      },
+      {
+        label: 'Музеи и культура',
+        spots: [
+          { name: 'teamLab Borderless', description: 'иммерсивное digital-искусство; билеты по дате, бронь за 2 недели', station: 'Azabu-jūban' },
+          { name: 'Nezu Museum', description: 'азиатское искусство + японский сад; идеально для позднего утра', station: 'Omotesandō' },
+        ],
+      },
+    ],
     note: 'Лучшие токийские кадры — скорее editorial, чем исторические. Рассвет — для тихих улиц, не для музеев. Nezu — план на позднее утро с мягким светом, не на рассвет.',
   },
   {
@@ -519,6 +579,55 @@ export const cities: CityChapter[] = [
           'отличный обед на ходу, но не ешьте на ходу — японский этикет',
       },
     ],
+    sightseeing: [
+      {
+        label: 'Храмы и святилища',
+        spots: [
+          { name: 'Fushimi Inari Taisha', description: 'тысячи красных тории вверх по горе; идите рано утром — к 08:00 уже толпы', station: 'Inari (JR)' },
+          { name: 'Kinkaku-ji', description: 'Золотой павильон на воде; классика, которую стоит увидеть хотя бы раз', station: 'автобус 101/205' },
+          { name: 'Kiyomizu-dera', description: 'храм на склоне с деревянной террасой; панорама города и закат', station: 'Kiyomizu-gojō' },
+          { name: 'Ryōan-ji', description: 'сад камней — 15 камней, из которых видно только 14; медитативная тишина', station: 'автобус 59' },
+        ],
+      },
+      {
+        label: 'Парки и сады',
+        spots: [
+          { name: 'Arashiyama Bamboo Grove', description: 'бамбуковая роща — магия только до 07:00, потом туристический конвейер', station: 'Saga-Arashiyama' },
+          { name: 'Philosopher\'s Path', description: '2 км вдоль канала: храмы, кафе, кошки; лучшее позднее утро Киото', station: 'Keage' },
+          { name: 'Maruyama Park', description: 'главный парк Гиона; плакучая сакура, пруд, переход к Yasaka Shrine', station: 'Gion-Shijō' },
+        ],
+      },
+      {
+        label: 'Районы для прогулок',
+        spots: [
+          { name: 'Gion', description: 'чайные дома, мачия, гейши; Hanamikōji-dōri — главная улица, но боковые переулки интереснее', station: 'Gion-Shijō' },
+          { name: 'Higashiyama', description: 'от Kiyomizu до Yasaka — пешеходный маршрут через старый Киото: керамика, веера, моти', station: 'Kiyomizu-gojō' },
+          { name: 'Nishijin', description: 'район ткачей — кимоно-мастерские, мачия, почти без туристов', station: 'Imadegawa' },
+        ],
+      },
+      {
+        label: 'Виды и смотровые',
+        spots: [
+          { name: 'K36 The Bar & Rooftop', description: 'лучший закатный вид в Киото; коктейли на крыше с панорамой храмов', station: 'Gion-Shijō' },
+          { name: 'Shogunzuka Seiryuden', description: 'смотровая терраса выше Kiyomizu; панорама всего Киото без толп', station: 'Keage + 20 мин пешком' },
+        ],
+      },
+      {
+        label: 'Шопинг и рынки',
+        spots: [
+          { name: 'Nishiki Market', description: '400 м крытого рынка — цукемоно, юба, маття-десерты; обед на ходу', station: 'Karasuma' },
+          { name: 'Teramachi & Shinkyogoku', description: 'крытые торговые аркады с mix японских сувениров и craft-магазинов', station: 'Kawaramachi' },
+        ],
+      },
+      {
+        label: 'Музеи и культура',
+        spots: [
+          { name: 'Kyoto National Museum', description: 'главная коллекция: буддийская скульптура, свитки, керамика', station: 'Shichijō' },
+          { name: 'HOSOO GALLERY', description: 'современное текстильное искусство в 300-летней ткацкой мастерской', station: 'Karasuma Oike' },
+          { name: 'Camellia Tea Ceremony', description: 'приватная чайная церемония для двоих — интимно, не для инстаграма', station: 'Gion-Shijō' },
+        ],
+      },
+    ],
     note: 'Киото — место, где поездка становится по-настоящему эмоциональной. Рассвет здесь важнее, чем где-либо. И ещё: уважайте знаки «без фото» / «вход запрещён» на частных улочках Гион.',
   },
   {
@@ -584,6 +693,52 @@ export const cities: CityChapter[] = [
         name: 'Kuromon Market',
         description:
           'хороший финальный гастро-маршрут; выбирайте, а не объедайтесь — так фотогеничнее',
+      },
+    ],
+    sightseeing: [
+      {
+        label: 'Храмы и замки',
+        spots: [
+          { name: 'Osaka Castle', description: 'главный замок города; снаружи красивее, чем внутри — обходите по внешнему рву утром', station: 'Tanimachi 4-chōme' },
+          { name: 'Shitennō-ji', description: 'старейший буддийский храм Японии (593 г.); тихий, без толп', station: 'Shitennōji-mae Yūhigaoka' },
+          { name: 'Sumiyoshi Taisha', description: 'святилище с арочными мостами и архитектурой до-китайского стиля', station: 'Sumiyoshi Taisha (Nankai)' },
+        ],
+      },
+      {
+        label: 'Парки и сады',
+        spots: [
+          { name: 'Nakanoshima Park', description: 'розарий между двух рек; мосты, фонтаны, вечерняя подсветка', station: 'Naniwabashi' },
+          { name: 'Minoo Park', description: '30 мин от центра — водопад, обезьяны, момидзи-темпура; хороший побег на полдня', station: 'Minoo (Hankyū)' },
+        ],
+      },
+      {
+        label: 'Районы для прогулок',
+        spots: [
+          { name: 'Dotonbori / Namba', description: 'неон, стрит-фуд, энергия — лучше вечером; гигантские вывески и канал', station: 'Namba' },
+          { name: 'Shinsekai', description: 'ретро-район с башней Tsūtenkaku; кушикацу, пиво, ностальгическая атмосфера', station: 'Ebisucho' },
+          { name: 'Amerikamura', description: 'молодёжный район: винтаж, стрит-арт, крафтовые кафе', station: 'Shinsaibashi' },
+        ],
+      },
+      {
+        label: 'Виды и смотровые',
+        spots: [
+          { name: 'Umeda Sky Building', description: 'футуристическая смотровая с эскалатором в небо; лучший закат Осаки', station: 'Umeda' },
+          { name: 'Abeno Harukas 300', description: 'самый высокий небоскрёб Осаки — 300 м, панорама до Кобе и Нары', station: 'Tennōji' },
+        ],
+      },
+      {
+        label: 'Шопинг и рынки',
+        spots: [
+          { name: 'Kuromon Market', description: '«кухня Осаки» — морепродукты, фрукты, вагю; финальный гастро-маршрут', station: 'Nipponbashi' },
+          { name: 'Shinsaibashi-suji', description: 'крытая торговая улица на 600 м — от люкса до масс-маркета', station: 'Shinsaibashi' },
+        ],
+      },
+      {
+        label: 'Музеи и культура',
+        spots: [
+          { name: 'Nakanoshima Museum of Art', description: 'новый музей (2022) — современное искусство в чёрном кубе над водой', station: 'Watanabebashi' },
+          { name: 'Osaka Aquarium Kaiyukan', description: 'один из крупнейших аквариумов мира; китовая акула, медузы, тихоокеанский зал', station: 'Osakakō' },
+        ],
       },
     ],
     note: 'Осака здесь не для торжественности. Используйте её для еды, речного света, одного чистого кадра с горизонтом и плавного разгона к раннему вылету из KIX.',

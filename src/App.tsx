@@ -679,6 +679,32 @@ function CitySection({
           />
         </div>
 
+        {city.sightseeing.length > 0 && (
+          <div className="sightseeing-section">
+            <p className="mini-label">ЧТО ПОСМОТРЕТЬ</p>
+            <div className="sightseeing-grid">
+              {city.sightseeing.map((cat) => (
+                <div key={cat.label} className="sightseeing-category">
+                  <h4 className="sightseeing-cat-label">{cat.label}</h4>
+                  <ul className="sightseeing-list">
+                    {cat.spots.map((spot) => (
+                      <li key={spot.name} className="sightseeing-spot">
+                        <strong>{spot.name}</strong>
+                        <span>{spot.description}</span>
+                        {spot.station && (
+                          <small className="sightseeing-station">
+                            {spot.station}
+                          </small>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         <p className="city-note">{city.note}</p>
       </div>
     </motion.section>
