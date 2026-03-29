@@ -1900,6 +1900,161 @@
   color: var(--ink-soft, rgba(20, 17, 14, 0.72));
 }
 
+/* ── Photo Walks ──────────────────────────────────────────── */
+
+.photo-walks-section {
+  margin-top: 2.5rem;
+}
+
+.photo-walks-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.photo-walk-card {
+  padding: 1.5rem;
+}
+
+.photo-walk-header {
+  margin-bottom: 1rem;
+}
+
+.photo-walk-header h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 0 0.35rem;
+}
+
+.photo-walk-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft, rgba(20, 17, 14, 0.6));
+}
+
+.photo-walk-time {
+  color: var(--vermilion);
+  font-weight: 600;
+}
+
+.photo-walk-stops {
+  list-style: none;
+  counter-reset: walk-stop;
+  margin: 0;
+  padding: 0;
+}
+
+.photo-walk-stops li {
+  counter-increment: walk-stop;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.15rem;
+  padding: 0.6rem 0 0.6rem 2rem;
+  border-bottom: 1px solid rgba(20, 17, 14, 0.06);
+  position: relative;
+}
+
+.photo-walk-stops li::before {
+  content: counter(walk-stop);
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--vermilion);
+  opacity: 0.7;
+}
+
+.photo-walk-stops li:last-child {
+  border-bottom: none;
+}
+
+.photo-walk-stops strong {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.photo-walk-stops span {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--ink-soft, rgba(20, 17, 14, 0.72));
+}
+
+/* ── Photo Inspiration ────────────────────────────────────── */
+
+.photo-inspo-section {
+  margin-top: 2.5rem;
+}
+
+.photo-inspo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.photo-inspo-card {
+  padding: 1.5rem;
+}
+
+.photo-inspo-header {
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--vermilion);
+}
+
+.photo-inspo-header h4 {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 0.25rem;
+}
+
+.photo-inspo-mood {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--ink-soft, rgba(20, 17, 14, 0.6));
+}
+
+.photo-inspo-spots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.photo-inspo-spots li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(20, 17, 14, 0.06);
+}
+
+.photo-inspo-spots li:last-child {
+  border-bottom: none;
+}
+
+.photo-inspo-spots strong {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.photo-inspo-spots span {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--ink-soft, rgba(20, 17, 14, 0.72));
+}
+
 /* ── Mobile responsive for new sections ──────────────────── */
 
 @media (max-width: 640px) {
@@ -1918,5 +2073,9 @@
   .day-trip-header {
     flex-direction: column;
     gap: 0.25rem;
+  }
+
+  .photo-inspo-grid {
+    grid-template-columns: 1fr;
   }
 }

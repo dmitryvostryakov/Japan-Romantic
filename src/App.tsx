@@ -740,6 +740,57 @@ function CitySection({
           </div>
         )}
 
+        {city.photoWalks && city.photoWalks.length > 0 && (
+          <div className="photo-walks-section">
+            <p className="mini-label">ФОТОПРОГУЛКИ</p>
+            <div className="photo-walks-grid">
+              {city.photoWalks.map((walk) => (
+                <article key={walk.title} className="soft-panel photo-walk-card">
+                  <div className="photo-walk-header">
+                    <h4>{walk.title}</h4>
+                    <div className="photo-walk-meta">
+                      <span>{walk.duration}</span>
+                      <span className="photo-walk-time">{walk.bestTime}</span>
+                    </div>
+                  </div>
+                  <ol className="photo-walk-stops">
+                    {walk.stops.map((stop) => (
+                      <li key={stop.spot}>
+                        <strong>{stop.spot}</strong>
+                        <span>{stop.tip}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {city.photoInspo && city.photoInspo.length > 0 && (
+          <div className="photo-inspo-section">
+            <p className="mini-label">ВДОХНОВЕНИЕ ДЛЯ СЪЁМОК</p>
+            <div className="photo-inspo-grid">
+              {city.photoInspo.map((inspo) => (
+                <article key={inspo.title} className="soft-panel photo-inspo-card">
+                  <div className="photo-inspo-header">
+                    <h4>{inspo.title}</h4>
+                    <span className="photo-inspo-mood">{inspo.mood}</span>
+                  </div>
+                  <ul className="photo-inspo-spots">
+                    {inspo.spots.map((s) => (
+                      <li key={s.location}>
+                        <strong>{s.location}</strong>
+                        <span>{s.idea}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+
         {city.sightseeing.length > 0 && (
           <div className="sightseeing-section">
             <p className="mini-label">ЧТО ПОСМОТРЕТЬ</p>
