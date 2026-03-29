@@ -24,6 +24,7 @@ import {
   tripFrame,
   versionNotes,
   wardrobeCapsules,
+  whyNow,
   type CityChapter,
 } from './trip-content'
 import {
@@ -90,6 +91,27 @@ function App() {
       <SiteChrome />
       <main>
         <HeroSection shouldReduceMotion={shouldReduceMotion} />
+
+        <motion.section
+          className="section section-why-now"
+          id="why-now"
+          {...sectionReveal}
+        >
+          <ChapterHeader
+            eyebrow={whyNow.eyebrow}
+            page="01"
+            title={whyNow.title}
+            description="Несколько причин, почему именно весна 2026 — лучший момент для этой поездки."
+          />
+          <div className="why-now-grid">
+            {whyNow.points.map((point) => (
+              <article key={point.title} className="soft-panel why-now-card">
+                <h3>{point.title}</h3>
+                <p>{point.body}</p>
+              </article>
+            ))}
+          </div>
+        </motion.section>
 
         <motion.section
           className="section section-frame"
@@ -508,6 +530,7 @@ function SiteChrome() {
         Japan edit / весна 2026
       </a>
       <nav aria-label="Page sections">
+        <a href="#why-now">Почему сейчас</a>
         <a href="#frame">Маршрут</a>
         <a href="#cities">Города</a>
         <a href="#capsules">Гардероб</a>
@@ -668,6 +691,27 @@ function CitySection({
           description={`Утренний золотой час: ${city.goldenHour.am} • Вечерний золотой час: ${city.goldenHour.pm} • база: ${city.base}`}
         />
 
+        {city.suggestedDays && city.suggestedDays.length > 0 && (
+          <div className="suggested-days-section">
+            <p className="mini-label">РЕКОМЕНДОВАННЫЙ МАРШРУТ</p>
+            <div className="suggested-days-grid">
+              {city.suggestedDays.map((day) => (
+                <article key={day.label} className="soft-panel suggested-day-card">
+                  <div className="suggested-day-header">
+                    <h4>{day.label}</h4>
+                    <span className="suggested-day-theme">{day.theme}</span>
+                  </div>
+                  <ul className="suggested-day-flow">
+                    {day.flow.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div className="city-panel-grid">
           <GoldenHourPanel title="УТРЕННИЙ СВЕТ" tone="am" items={city.am} />
           <GoldenHourPanel title="ВЕЧЕРНИЙ СВЕТ" tone="pm" items={city.pm} />
@@ -678,6 +722,23 @@ function CitySection({
             wide
           />
         </div>
+
+        {city.foodNotes && city.foodNotes.length > 0 && (
+          <div className="food-notes-section">
+            <p className="mini-label">ГАСТРОНОМИЧЕСКИЕ ЗАМЕТКИ</p>
+            <div className="food-notes-grid">
+              {city.foodNotes.map((note) => (
+                <article key={note.title} className="soft-panel food-note-card">
+                  <h4>{note.title}</h4>
+                  <p>{note.body}</p>
+                  {note.priceHint && (
+                    <p className="food-note-price">{note.priceHint}</p>
+                  )}
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
 
         {city.sightseeing.length > 0 && (
           <div className="sightseeing-section">
@@ -729,6 +790,28 @@ function CitySection({
                 </li>
               ))}
             </ul>
+          </div>
+        )}
+
+        {city.dayTrips && city.dayTrips.length > 0 && (
+          <div className="day-trips-section">
+            <p className="mini-label">ОДНОДНЕВНАЯ ПОЕЗДКА</p>
+            {city.dayTrips.map((trip) => (
+              <article key={trip.destination} className="soft-panel day-trip-card">
+                <div className="day-trip-header">
+                  <h4>{trip.destination}</h4>
+                  <span className="day-trip-duration">{trip.duration}</span>
+                </div>
+                <ul className="day-trip-highlights">
+                  {trip.highlights.map((h) => (
+                    <li key={h.name}>
+                      <strong>{h.name}</strong>
+                      <span>{h.description}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
           </div>
         )}
 

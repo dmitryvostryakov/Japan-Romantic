@@ -1712,3 +1712,211 @@
     font-size: 0.76rem;
   }
 }
+
+/* ── Why Now section ──────────────────────────────────────── */
+
+.why-now-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.why-now-card {
+  padding: 1.5rem;
+}
+
+.why-now-card h3 {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.why-now-card p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink-soft, rgba(20, 17, 14, 0.72));
+}
+
+/* ── Suggested Days ───────────────────────────────────────── */
+
+.suggested-days-section {
+  margin-top: 2.5rem;
+}
+
+.suggested-days-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.suggested-day-card {
+  padding: 1.25rem;
+}
+
+.suggested-day-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.suggested-day-header h4 {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vermilion);
+  margin: 0;
+}
+
+.suggested-day-theme {
+  font-size: 0.82rem;
+  color: var(--ink-soft, rgba(20, 17, 14, 0.6));
+  font-style: italic;
+}
+
+.suggested-day-flow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.suggested-day-flow li {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid rgba(20, 17, 14, 0.06);
+}
+
+.suggested-day-flow li:last-child {
+  border-bottom: none;
+}
+
+/* ── Food Notes ───────────────────────────────────────────── */
+
+.food-notes-section {
+  margin-top: 2.5rem;
+}
+
+.food-notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.food-note-card {
+  padding: 1.5rem;
+}
+
+.food-note-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+
+.food-note-card p {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--ink-soft, rgba(20, 17, 14, 0.72));
+}
+
+.food-note-price {
+  margin-top: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--vermilion);
+}
+
+/* ── Day Trips ────────────────────────────────────────────── */
+
+.day-trips-section {
+  margin-top: 2.5rem;
+}
+
+.day-trip-card {
+  padding: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.day-trip-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.day-trip-header h4 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.day-trip-duration {
+  font-size: 0.82rem;
+  color: var(--ink-soft, rgba(20, 17, 14, 0.6));
+  letter-spacing: 0.04em;
+}
+
+.day-trip-highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.day-trip-highlights li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(20, 17, 14, 0.06);
+}
+
+.day-trip-highlights li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.day-trip-highlights strong {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.day-trip-highlights span {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--ink-soft, rgba(20, 17, 14, 0.72));
+}
+
+/* ── Mobile responsive for new sections ──────────────────── */
+
+@media (max-width: 640px) {
+  .why-now-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .suggested-days-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .food-notes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .day-trip-header {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
