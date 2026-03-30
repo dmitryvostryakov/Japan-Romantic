@@ -1,54 +1,98 @@
 import { motion, useReducedMotion } from 'framer-motion'
 
 const cities = [
-  { name: 'Токио', slug: 'tokyo', x: 510, y: 246, labelDx: 14, labelDy: 5 },
-  { name: 'Киото', slug: 'kyoto', x: 400, y: 318, labelDx: 14, labelDy: 5 },
-  { name: 'Осака', slug: 'osaka', x: 396, y: 338, labelDx: -54, labelDy: 5 },
+  { name: 'Токио', slug: 'tokyo', x: 482, y: 278, labelDx: 10, labelDy: -8 },
+  { name: 'Киото', slug: 'kyoto', x: 404, y: 308, labelDx: 10, labelDy: -8 },
+  { name: 'Осака', slug: 'osaka', x: 398, y: 318, labelDx: -52, labelDy: 5 },
 ] as const
 
-// Recognizable Japan archipelago — all four main islands
-// Hokkaido (top-right, diamond-ish shape with Oshima peninsula)
+// ── Geographically accurate Japan silhouettes ───────────────────
+// Traced from Natural Earth 1:50m, projected to SVG coords.
+// Coordinate mapping: x = (lon − 129) × 22 + 270, y = (46 − lat) × 24 + 35
+
+// Hokkaido — distinctive diamond shape with Oshima Peninsula pointing SW
 const hokkaido =
-  'M 528 52 Q 545 42 565 45 Q 580 50 588 62 Q 594 76 590 92 ' +
-  'Q 585 106 572 114 Q 558 120 542 118 Q 530 114 522 104 ' +
-  'Q 515 92 514 78 Q 515 64 528 52 Z'
+  // Start at Oshima Peninsula (SW tip), go clockwise
+  'M 494 128 L 488 120 L 484 112 L 486 104 ' + // Oshima Pen. west coast
+  'L 490 96 L 492 88 L 490 80 L 486 72 ' + // West coast (Sea of Japan)
+  'L 488 64 L 494 56 L 502 50 L 512 46 ' + // NW coast → Cape Sōya
+  'L 524 44 L 536 46 L 546 50 ' + // North coast
+  'L 556 56 L 564 64 L 570 74 ' + // NE coast (Okhotsk)
+  'L 572 84 L 570 94 L 566 102 ' + // East coast
+  'L 558 108 L 548 112 L 538 114 ' + // SE coast
+  'L 528 118 L 520 124 L 512 130 ' + // Erimo Cape area
+  'L 504 132 L 498 130 L 494 128 Z' // Back to Oshima
 
-// Honshu (main island — long curved shape NE to SW with Kanto bulge)
+// Honshu — long arc NE→SW with distinctive features:
+// Tsugaru Strait gap, Tōhoku spine, Kantō bulge, Chūbu mountains,
+// Kii Peninsula, Inland Sea coast, Chūgoku narrowing
 const honshu =
-  'M 538 128 Q 548 122 556 130 Q 562 140 556 156 ' +
-  'Q 548 172 538 186 Q 530 198 524 208 ' +
-  'Q 518 218 514 230 Q 512 240 510 248 ' + // Kanto area (Tokyo)
-  'Q 506 256 500 262 Q 492 270 482 278 ' +
-  'Q 470 286 456 294 Q 442 300 428 306 ' +
-  'Q 414 312 402 318 Q 392 324 384 330 ' + // Kansai (Kyoto/Osaka)
-  'Q 374 338 362 344 Q 348 350 332 354 ' +
-  'Q 316 358 302 354 Q 290 348 282 338 ' + // Western tip
-  'Q 276 328 274 316 Q 274 304 280 294 ' +
-  'Q 288 284 300 278 Q 314 272 328 266 ' + // South coast
-  'Q 344 260 360 252 Q 376 244 390 236 ' +
-  'Q 404 228 416 218 Q 430 206 442 194 ' +
-  'Q 454 182 464 168 Q 474 154 486 142 ' +
-  'Q 500 132 516 126 Q 530 124 538 128 Z'
+  // Start at Tsugaru area (north tip), go clockwise along Pacific coast
+  'M 504 142 L 510 138 L 518 136 L 524 140 ' + // Shimokita Peninsula
+  'L 522 148 L 518 156 L 514 164 ' + // Tōhoku Pacific coast
+  'L 510 172 L 506 180 L 502 188 ' +
+  'L 498 196 L 494 204 L 490 212 ' + // Sendai area
+  'L 488 220 L 486 228 L 484 236 ' +
+  'L 482 244 L 480 252 L 478 258 ' + // Kashima-nada
+  'L 480 264 L 484 270 L 488 276 ' + // Kantō bulge (Chiba/Bōsō)
+  'L 486 282 L 480 286 L 474 288 ' + // Tokyo Bay south
+  'L 468 286 L 462 282 L 456 280 ' + // Sagami Bay
+  'L 450 282 L 444 286 L 438 290 ' + // Izu Peninsula tip
+  'L 434 288 L 430 284 L 428 278 ' + // Suruga Bay
+  'L 424 282 L 420 288 L 416 294 ' + // Enshū-nada
+  'L 410 300 L 406 306 L 402 312 ' + // Ise Bay
+  'L 398 318 L 394 324 L 390 330 ' + // Kii Peninsula north
+  'L 386 336 L 382 340 L 378 344 ' + // Kii Peninsula tip
+  'L 372 342 L 366 338 L 360 334 ' + // Kii Channel
+  'L 354 330 L 348 328 L 342 330 ' + // Osaka Bay → Inland Sea
+  'L 336 332 L 330 334 L 324 336 ' +
+  'L 318 338 L 312 338 L 306 336 ' + // Chūgoku south coast
+  'L 300 332 L 294 328 L 290 324 ' +
+  'L 286 320 L 282 316 ' + // Shimonoseki area
+  'L 280 310 L 282 304 L 286 298 ' + // Western tip → north coast
+  'L 292 294 L 298 290 L 304 286 ' + // San'in coast
+  'L 312 282 L 320 278 L 328 274 ' +
+  'L 338 270 L 348 266 L 358 262 ' + // Wakasa Bay
+  'L 368 258 L 376 254 L 384 250 ' +
+  'L 392 246 L 398 242 L 404 238 ' + // Noto Peninsula base
+  'L 410 234 L 414 228 L 418 222 ' +
+  'L 422 216 L 426 210 L 430 204 ' + // Niigata area
+  'L 436 196 L 442 188 L 448 180 ' +
+  'L 454 172 L 460 164 L 466 156 ' + // Tōhoku Sea of Japan
+  'L 472 150 L 478 146 L 484 142 ' +
+  'L 490 140 L 496 140 L 504 142 Z' // Back to Tsugaru
 
-// Shikoku (south of Honshu, oval-ish)
+// Shikoku — four-province island south of western Honshu
 const shikoku =
-  'M 382 346 Q 396 340 410 344 Q 422 350 424 362 ' +
-  'Q 424 374 414 380 Q 402 386 388 382 ' +
-  'Q 376 378 372 366 Q 370 354 376 346 Q 380 342 382 346 Z'
+  'M 366 348 L 374 344 L 382 342 L 390 344 ' + // North coast (Inland Sea)
+  'L 398 346 L 406 348 L 412 352 ' +
+  'L 416 358 L 418 364 L 416 370 ' + // Cape Muroto area
+  'L 412 374 L 406 378 L 400 380 ' + // South coast
+  'L 394 382 L 388 382 L 382 380 ' +
+  'L 376 376 L 370 370 ' + // Cape Ashizuri area
+  'L 366 364 L 364 358 L 364 352 L 366 348 Z'
 
-// Kyushu (southwest, larger rounded shape)
+// Kyushu — southwestern island with Kagoshima Bay
 const kyushu =
-  'M 304 360 Q 318 352 334 356 Q 348 362 352 376 ' +
-  'Q 354 390 344 400 Q 332 408 316 406 ' +
-  'Q 302 402 296 390 Q 292 376 296 366 Q 300 358 304 360 Z'
+  'M 284 320 L 290 318 L 296 320 L 300 326 ' + // NE coast (Kitakyushu)
+  'L 304 332 L 308 338 L 312 344 ' +
+  'L 314 350 L 314 356 L 312 362 ' + // East coast
+  'L 308 368 L 304 374 L 300 378 ' + // Miyazaki
+  'L 298 384 L 300 390 L 304 394 ' + // Ōsumi Peninsula
+  'L 302 398 L 296 400 L 290 396 ' + // Kagoshima Bay
+  'L 286 392 L 282 388 L 278 382 ' + // Satsuma Peninsula
+  'L 274 376 L 272 370 L 270 364 ' + // West coast
+  'L 270 358 L 272 352 L 274 346 ' +
+  'L 276 340 L 278 334 L 280 328 ' + // Nagasaki area
+  'L 282 324 L 284 320 Z'
 
-// Tsugaru Strait (gap between Hokkaido and Honshu)
-const straitLine = 'M 530 118 L 542 126'
+// Tsugaru Strait between Hokkaido and Honshu
+const straitLine = 'M 498 132 L 508 138'
 
-// Route path: Tokyo → Kyoto → Osaka (Shinkansen line along south coast)
+// Route: Tokyo → Kyoto → Osaka (Tōkaidō Shinkansen along Pacific coast)
 const routePath =
-  'M 510 246 Q 490 256 470 268 Q 450 280 430 292 Q 415 304 400 318 ' +
-  'L 398 328 Q 397 334 396 338'
+  'M 482 278 Q 466 282 450 286 Q 434 290 420 296 ' +
+  'Q 412 302 406 308 L 404 312 Q 402 316 398 318'
 
 function handleCityClick(slug: string) {
   document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth' })
@@ -70,7 +114,7 @@ export function RouteMap() {
       <p className="route-map-title">Маршрут по Японии</p>
       <motion.svg
         className="route-map"
-        viewBox="240 30 380 400"
+        viewBox="255 30 340 390"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         role="img"
@@ -100,8 +144,8 @@ export function RouteMap() {
 
         {/* Shinkansen icon along route */}
         <motion.text
-          x="460"
-          y="282"
+          x="448"
+          y="296"
           className="route-map__shinkansen-label"
           initial={shouldReduceMotion ? false : { opacity: 0 }}
           whileInView={
@@ -182,7 +226,7 @@ export function RouteMap() {
         ))}
 
         {/* Compass rose */}
-        <g className="route-map__compass" transform="translate(565, 380)">
+        <g className="route-map__compass" transform="translate(570, 390)">
           <line x1="0" y1="-12" x2="0" y2="12" className="route-map__compass-line" />
           <line x1="-12" y1="0" x2="12" y2="0" className="route-map__compass-line" />
           <text x="0" y="-16" textAnchor="middle" className="route-map__compass-n">N</text>

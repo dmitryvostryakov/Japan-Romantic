@@ -1932,6 +1932,72 @@ html {
   }
 }
 
+/* ── Builder CTA Card ──────────────────────────────────────── */
+
+.builder-cta-card {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.builder-cta-text {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+}
+
+.builder-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.builder-cta-link:hover,
+.builder-cta-link:focus-visible {
+  background: var(--vermilion);
+  border-color: var(--vermilion);
+}
+
+/* ── Builder Page Header ───────────────────────────────────── */
+
+.builder-page-header {
+  padding: 6rem var(--gutter) 1rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.builder-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.builder-back-link:hover,
+.builder-back-link:focus-visible {
+  color: var(--ink);
+}
+
 /* ── Trip Builder ───────────────────────────────────────────── */
 
 .builder-section {

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { useActiveSection } from '../hooks/useActiveSection'
 
 function useTheme() {
@@ -23,13 +24,20 @@ function useTheme() {
   return { theme, toggle }
 }
 
-const navItems = [
+type NavItem = {
+  href: string
+  label: string
+  sections: string[]
+  route?: string
+}
+
+const navItems: NavItem[] = [
   { href: '#why-now', label: 'Почему сейчас', sections: ['why-now'] },
   { href: '#frame', label: 'Маршрут', sections: ['frame', 'hotels', 'budget'] },
   { href: '#cities', label: 'Города', sections: ['tokyo', 'kyoto', 'osaka'] },
   { href: '#capsules', label: 'Гардероб', sections: ['capsules', 'packing'] },
   { href: '#extras', label: 'Детали', sections: ['extras', 'links', 'reservations'] },
-  { href: '#builder', label: 'Конфигуратор', sections: ['builder'] },
+  { href: '/builder', label: 'Конфигуратор', sections: ['builder'], route: '/builder' },
   { href: '#after-dark', label: 'После заката', sections: ['after-dark'] },
   { href: '#last-note', label: 'Финал', sections: ['last-note'] },
 ]
@@ -37,6 +45,8 @@ const navItems = [
 export function SiteChrome() {
   const { theme, toggle } = useTheme()
   const activeSection = useActiveSection()
+  const location = useLocation()
+  const isBuilderPage = location.pathname === '/builder'
 
   return (
     <>
@@ -44,19 +54,29 @@ export function SiteChrome() {
       Перейти к содержимому
     </a>
     <header className="site-chrome">
-      <a className="site-mark" href="#top">
+      <Link className="site-mark" to="/">
         Japan edit / весна 2026
-      </a>
+      </Link>
       <nav aria-label="Page sections">
-        {navItems.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            className={item.sections.includes(activeSection) ? 'is-active' : ''}
-          >
-            {item.label}
-          </a>
-        ))}
+        {navItems.map((item) =>
+          item.route ? (
+            <Link
+              key={item.href}
+              to={item.route}
+              className={isBuilderPage ? 'is-active' : ''}
+            >
+              {item.label}
+            </Link>
+          ) : (
+            <a
+              key={item.href}
+              href={item.href}
+              className={!isBuilderPage && item.sections.includes(activeSection) ? 'is-active' : ''}
+            >
+              {item.label}
+            </a>
+          ),
+        )}
       </nav>
       <button
         className="theme-toggle"
