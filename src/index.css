@@ -4,8 +4,8 @@
   --paper: #faf7f2;
   --paper-deep: #f0ebe3;
   --ink: #1a1714;
-  --muted: #9a8b7a;
-  --muted-strong: #6d5f50;
+  --muted: #7a6c5c;
+  --muted-strong: #5d5042;
   --line: rgba(140, 120, 95, 0.18);
   --vermilion: #c4503c;
   --stone: #cdbba7;
@@ -133,8 +133,8 @@ hr,
   --paper: #141210;
   --paper-deep: #1a1816;
   --ink: #ece7df;
-  --muted: #8a7d6e;
-  --muted-strong: #b0a494;
+  --muted: #a89a8a;
+  --muted-strong: #c4b8aa;
   --line: rgba(180, 160, 130, 0.14);
   --vermilion: #e0614c;
   --stone: #4a3e34;
@@ -154,6 +154,81 @@ html[data-theme] {
 
 [data-theme='dark'] :focus-visible {
   outline-color: rgba(224, 97, 76, 0.5);
+}
+
+/* ── Decorative Section Patterns ──────────────────────── */
+
+/* Seigaiha wave pattern (used on destinations & hotels sections) */
+.section-destinations::before,
+.section-hotels::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='80' r='38' fill='none' stroke='%231a1714' stroke-width='0.5'/%3E%3Ccircle cx='40' cy='80' r='28' fill='none' stroke='%231a1714' stroke-width='0.5'/%3E%3Ccircle cx='40' cy='80' r='18' fill='none' stroke='%231a1714' stroke-width='0.5'/%3E%3Ccircle cx='0' cy='80' r='38' fill='none' stroke='%231a1714' stroke-width='0.5'/%3E%3Ccircle cx='0' cy='80' r='28' fill='none' stroke='%231a1714' stroke-width='0.5'/%3E%3Ccircle cx='0' cy='80' r='18' fill='none' stroke='%231a1714' stroke-width='0.5'/%3E%3Ccircle cx='80' cy='80' r='38' fill='none' stroke='%231a1714' stroke-width='0.5'/%3E%3Ccircle cx='80' cy='80' r='28' fill='none' stroke='%231a1714' stroke-width='0.5'/%3E%3Ccircle cx='80' cy='80' r='18' fill='none' stroke='%231a1714' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+.section-destinations,
+.section-hotels {
+  position: relative;
+}
+
+/* Noise texture overlay for frame & budget sections */
+.section-frame::before,
+.section-budget::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+.section-frame,
+.section-budget {
+  position: relative;
+}
+
+/* Sakura petal scatter for capsules & packing sections */
+.section-capsules::after,
+.section-packing::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  opacity: 0.06;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath d='M30 40 C20 30 30 10 40 20 C50 10 60 30 50 40 C60 50 40 60 30 40Z' fill='%23c4503c' opacity='0.5'/%3E%3Cpath d='M130 80 C120 70 130 50 140 60 C150 50 160 70 150 80 C160 90 140 100 130 80Z' fill='%23c4503c' opacity='0.3'/%3E%3Cpath d='M80 150 C70 140 80 120 90 130 C100 120 110 140 100 150 C110 160 90 170 80 150Z' fill='%23c4503c' opacity='0.4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+}
+
+.section-capsules,
+.section-packing {
+  position: relative;
+}
+
+/* Dark mode: invert pattern strokes */
+[data-theme='dark'] .section-destinations::before,
+[data-theme='dark'] .section-hotels::before {
+  filter: invert(1);
+  opacity: 0.025;
+}
+
+[data-theme='dark'] .section-frame::before,
+[data-theme='dark'] .section-budget::before {
+  filter: invert(1);
+  opacity: 0.03;
+}
+
+[data-theme='dark'] .section-capsules::after,
+[data-theme='dark'] .section-packing::after {
+  filter: invert(1) hue-rotate(180deg);
+  opacity: 0.04;
 }
 
 @media (max-width: 720px) {

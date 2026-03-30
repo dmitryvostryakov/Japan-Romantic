@@ -220,7 +220,7 @@ export function TripBuilder() {
           })()}
 
           {isSummary && (
-            <div className="builder-summary">
+            <div className="builder-summary" aria-live="polite" role="region" aria-label="Сводка поездки">
               {builderCities.map((city) => {
                 const hotel = city.hotels.find((h) => h.id === selectedHotels[city.slug])
                 const cityRests = cityRestaurants(city.slug)
