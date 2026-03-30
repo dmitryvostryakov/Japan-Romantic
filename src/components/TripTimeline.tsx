@@ -113,7 +113,7 @@ export function TripTimeline() {
           >
             {i === 0 || i === totalNights ? (
               <span className="trip-timeline__tick-label">
-                {i === 0 ? 'Day 1' : `Day ${totalNights}`}
+                {i === 0 ? 'День 1' : `День ${totalNights}`}
               </span>
             ) : null}
           </div>

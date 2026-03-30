@@ -383,13 +383,13 @@ export const whyNow = {
 }
 
 export const hero = {
-  edition: 'curated edit / spring 2026',
+  edition: 'авторская редакция / весна 2026',
   title: 'JAPAN ROMANTIC',
-  route: 'Tokyo / Kyoto / Osaka',
+  route: 'Токио / Киото / Осака',
   dek: 'Романтика, стиль, адреса на золотой час, Green Car, лучшие рестораны и тонкая логистика — чтобы поездка выглядела как ваша лучшая редакционная история.',
   note: 'В духе editorial city guide: меньше чеклистов, больше атмосферы, тайминга, одежды и мест, где свет красив.',
   version: 'Japan edit / v4',
-  ctaLabel: 'Открыть маршрут',
+  ctaLabel: 'Смотреть план',
   image: tokyoSunset,
   secondaryImage: kyotoRain,
 }
@@ -397,9 +397,9 @@ export const hero = {
 export const tripFrame = {
   travelers: 'для Dmitrii & Viktoriia Vostriakov',
   flights: [
-    { date: '09 May 2026', route: 'SVO > PVG' },
-    { date: '10 May 2026', route: 'PVG > NRT 15:55' },
-    { date: '19 May 2026', route: 'KIX 09:30 > PVG > SVO' },
+    { date: '09 мая 2026', route: 'SVO > PVG' },
+    { date: '10 мая 2026', route: 'PVG > NRT 15:55' },
+    { date: '19 мая 2026', route: 'KIX 09:30 > PVG > SVO' },
   ],
   essentials: [
     { label: 'Маршрут', value: 'SVO > PVG > NRT / KIX > PVG > SVO' },
@@ -572,8 +572,8 @@ export const budgetRows: Array<
 export const cities: CityChapter[] = [
   {
     slug: 'tokyo',
-    label: 'TOKYO',
-    dateRange: '10–14 May 2026',
+    label: 'ТОКИО',
+    dateRange: '10–14 мая 2026',
     theme: 'городской стиль / линия горизонта / первые четыре ночи',
     base: 'THE AOYAMA GRAND HOTEL',
     goldenHour: {
@@ -903,8 +903,8 @@ export const cities: CityChapter[] = [
   },
   {
     slug: 'kyoto',
-    label: 'KYOTO',
-    dateRange: '14–17 May 2026',
+    label: 'КИОТО',
+    dateRange: '14–17 мая 2026',
     theme: 'эмоциональный центр поездки / лучший свет / старый камень',
     base: 'THE HOTEL SEIRYU or SOWAKA',
     goldenHour: {
@@ -1260,8 +1260,8 @@ export const cities: CityChapter[] = [
   },
   {
     slug: 'osaka',
-    label: 'OSAKA',
-    dateRange: '17–19 May 2026',
+    label: 'ОСАКА',
+    dateRange: '17–19 мая 2026',
     theme: 'финальный акт / еда / удобный выезд через KIX',
     base: 'ZENTIS OSAKA',
     goldenHour: {
@@ -1659,7 +1659,7 @@ export const reservations: Array<
 export const wardrobeCapsules: WardrobeCapsule[] = [
   {
     id: 'capsule-tokyo',
-    kicker: 'Capsule 01',
+    kicker: 'Капсула 01',
     title: 'Токио — городской стиль',
     preview: 'слоновая кость + чёрный + табак, чёткие силуэты, сдержанный блеск',
     forHer:
@@ -1676,7 +1676,7 @@ export const wardrobeCapsules: WardrobeCapsule[] = [
   },
   {
     id: 'capsule-kyoto',
-    kicker: 'Capsule 02',
+    kicker: 'Капсула 02',
     title: 'Киото — рассветная романтика',
     preview: 'кремовый + шалфей + камень, мягкие текстуры, тихая романтика',
     forHer:
@@ -1693,7 +1693,7 @@ export const wardrobeCapsules: WardrobeCapsule[] = [
   },
   {
     id: 'capsule-dinner',
-    kicker: 'Capsule 03',
+    kicker: 'Капсула 03',
     title: 'Ужин / руфтоп / бар',
     preview: 'чёрный + слоновая кость + золото, тонкий блеск, без кричащих логотипов',
     forHer:
@@ -1902,7 +1902,10 @@ export type CityHotelOption = {
   nights: number
   jpy: string
   mood: string
+  description?: string
   image?: ImageAsset
+  images?: ImageAsset[]
+  bookingUrl?: string
 }
 
 export type CityActivity = {
@@ -1924,7 +1927,7 @@ export const builderCities: CityBuilderData[] = [
   {
     slug: 'tokyo',
     label: 'Токио',
-    dateRange: '10–14 May',
+    dateRange: '10–14 мая',
     hotels: [
       {
         id: 'tokyo-muji',
@@ -1932,7 +1935,10 @@ export const builderCities: CityBuilderData[] = [
         nights: 4,
         jpy: '¥280 000',
         mood: 'минимализм MUJI, Ginza — дизайн-оптимум',
+        description: 'Натуральное дерево, приглушённый свет, тишина среди Гинзы. Номера с фирменной MUJI-эстетикой — ничего лишнего, только качество материалов.',
         image: hotelMuji,
+        images: [hotelMuji],
+        bookingUrl: 'https://hotel.muji.com/ginza/',
       },
       {
         id: 'tokyo-aoyama',
@@ -1940,7 +1946,10 @@ export const builderCities: CityBuilderData[] = [
         nights: 4,
         jpy: '¥580 400',
         mood: 'стильный, молодой, вид на город с The Top',
+        description: 'Руфтоп-бар The Top с панорамой Токио, дизайн от Wonderwall. Молодой luxury в самом сердце Аояма — модный район без туристов.',
         image: hotelAoyama,
+        images: [hotelAoyama],
+        bookingUrl: 'https://aoyamagrand.com',
       },
       {
         id: 'tokyo-k5',
@@ -1948,7 +1957,10 @@ export const builderCities: CityBuilderData[] = [
         nights: 4,
         jpy: '¥320 000',
         mood: 'банк 1923г., скандинавско-японский дизайн',
+        description: 'Историческое здание банка 1923 года, переосмысленное шведскими дизайнерами. Бар Ao, кофе Switch — атмосфера творческого клуба.',
         image: hotelK5,
+        images: [hotelK5],
+        bookingUrl: 'https://k5-tokyo.com',
       },
       {
         id: 'tokyo-nohga',
@@ -1956,12 +1968,13 @@ export const builderCities: CityBuilderData[] = [
         nights: 4,
         jpy: '¥200 000',
         mood: 'арт-район Уэно, локальный крафт',
+        description: 'Камерный отель в арт-квартале Уэно. Локальные крафтовые бренды в каждой детали — от мыла до кофейных зёрен.',
         image: hotelNohga,
+        images: [hotelNohga],
+        bookingUrl: 'https://www.nohgahotel.com/ueno/',
       },
     ],
     activities: [
-      { id: 'act-shibuya-sky', title: 'Shibuya Sky — закатный слот', description: 'бронируйте за 30 мин до заката; лучшие силуэтные кадры', jpy: '¥4 400' },
-      { id: 'act-teamlab', title: 'teamLab Planets', description: 'вход по времени; лучше утром, потом вода и закат', jpy: '¥6 800' },
       { id: 'act-aoyama-walk', title: 'Aoyama / Omotesando backstreets', description: 'утренние editorial-кадры без толпы' },
       { id: 'act-marunouchi', title: 'Marunouchi Station', description: 'симметрия, красный кирпич — дорого смотрится даже в простом' },
       { id: 'act-shiba', title: 'Shiba Park + Tokyo Tower', description: 'спокойный знаковый городской кадр без суеты' },
@@ -1970,7 +1983,7 @@ export const builderCities: CityBuilderData[] = [
   {
     slug: 'kyoto',
     label: 'Киото',
-    dateRange: '14–17 May',
+    dateRange: '14–17 мая',
     hotels: [
       {
         id: 'kyoto-kanra',
@@ -1978,7 +1991,10 @@ export const builderCities: CityBuilderData[] = [
         nights: 3,
         jpy: '¥221 000',
         mood: 'machiya + модерн, 46m² — дизайн-оптимум',
+        description: 'Machiya-стиль в современном исполнении — номера 46 м² с ванной хиноки. Тихий район между станцией и храмами, идеальная база для Киото.',
         image: hotelKanra,
+        images: [hotelKanra],
+        bookingUrl: 'https://www.hotelkanra.jp/en/',
       },
       {
         id: 'kyoto-seiryu',
@@ -1986,7 +2002,10 @@ export const builderCities: CityBuilderData[] = [
         nights: 3,
         jpy: '¥460 600',
         mood: 'лучшие виды, фотогеничный, отличная база',
+        description: 'Бывшая начальная школа 1869 года у подножия Kiyomizu-dera. Виды на пагоду и горы, ресторан на крыше — самый фотогеничный отель Киото.',
         image: hotelSeiryu,
+        images: [hotelSeiryu],
+        bookingUrl: 'https://www.thehoteiseiryu.com/en/',
       },
       {
         id: 'kyoto-ace',
@@ -1994,7 +2013,10 @@ export const builderCities: CityBuilderData[] = [
         nights: 3,
         jpy: '¥145 000',
         mood: 'Kengo Kuma, творческий вайб, отличный бар',
+        description: 'Kengo Kuma перестроил здание 1926 года. Виниловый бар, галерея, кофейня Stumptown — здесь тусуются творческие люди Киото.',
         image: hotelAceKyoto,
+        images: [hotelAceKyoto],
+        bookingUrl: 'https://acehotel.com/kyoto/',
       },
       {
         id: 'kyoto-good-nature',
@@ -2002,21 +2024,22 @@ export const builderCities: CityBuilderData[] = [
         nights: 3,
         jpy: '¥105 000',
         mood: 'эко-дизайн, Shijo, wellness',
+        description: 'Эко-отель на оживлённой Shijo. Органическая косметика, wellness-процедуры, ресторан с фермерским меню — осознанный luxury.',
         image: hotelGoodNature,
+        images: [hotelGoodNature],
+        bookingUrl: 'https://goodnaturehotel.jp/en/',
       },
     ],
     activities: [
-      { id: 'act-camellia', title: 'Camellia — приватный чай', description: 'сильная романтическая сцена; бронируйте заранее', jpy: '¥16 000' },
       { id: 'act-yasaka', title: 'Yasaka Pagoda на рассвете', description: 'пустые улочки, кимоно, камень — лучшие кадры Киото' },
       { id: 'act-shirakawa', title: 'Shirakawa canal вечером', description: 'канал, фонари, ива — классический романтический Киото' },
       { id: 'act-bamboo', title: 'Бамбуковая роща Арасияма', description: 'только на рассвете, иначе — толпа' },
-      { id: 'act-blue-bottle', title: 'Blue Bottle Studio', description: 'кофейный курс по брони — только если цените ритуал', jpy: '¥17 820' },
     ],
   },
   {
     slug: 'osaka',
     label: 'Осака',
-    dateRange: '17–19 May',
+    dateRange: '17–19 мая',
     hotels: [
       {
         id: 'osaka-zentis',
@@ -2024,7 +2047,10 @@ export const builderCities: CityBuilderData[] = [
         nights: 2,
         jpy: '¥97 100',
         mood: 'минималистичный дизайн, UPSTAIRZ bar',
+        description: 'Чистый минимализм от Tara Bernerd. Бар UPSTAIRZ на верхнем этаже с видом на город — идеален для последнего вечера.',
         image: hotelZentis,
+        images: [hotelZentis],
+        bookingUrl: 'https://www.zentishotels.com/osaka/en/',
       },
       {
         id: 'osaka-boly',
@@ -2032,7 +2058,10 @@ export const builderCities: CityBuilderData[] = [
         nights: 2,
         jpy: '¥73 000',
         mood: 'арт-отель у реки, Instagram-worthy',
+        description: 'Бутик-отель на набережной Nakanoshima. Арт-инсталляции в каждом номере, вид на реку — тихая романтика без пафоса.',
         image: hotelBoly,
+        images: [hotelBoly],
+        bookingUrl: 'https://www.theboly.com',
       },
       {
         id: 'osaka-moxy',
@@ -2040,12 +2069,13 @@ export const builderCities: CityBuilderData[] = [
         nights: 2,
         jpy: '¥40 000',
         mood: 'яркий лайфстайл Marriott',
+        description: 'Энергичный лайфстайл-отель Marriott. Яркий лобби-бар, компактные номера — всё для тех, кто проводит время в городе, а не в номере.',
         image: hotelMoxy,
+        images: [hotelMoxy],
+        bookingUrl: 'https://www.marriott.com/hotels/travel/osaxm-moxy-osaka-honmachi/',
       },
     ],
     activities: [
-      { id: 'act-umeda', title: 'Umeda Sky — закат', description: 'лёгкий закатный кадр с горизонтом Осаки', jpy: '¥3 000' },
-      { id: 'act-cruise', title: 'Nakanoshima Cruise', description: 'мягкое романтическое завершение вечера на воде', jpy: '¥3 800' },
       { id: 'act-dotonbori', title: 'Dotonbori ночью', description: 'неон, лодки, стрит-фуд — чистая энергия Осаки' },
       { id: 'act-kuromon', title: 'Kuromon Market', description: 'финальный гастро-маршрут; выбирайте, а не объедайтесь' },
     ],
@@ -2053,7 +2083,7 @@ export const builderCities: CityBuilderData[] = [
 ]
 
 export const lastNote = {
-  eyebrow: 'LAST NOTE',
+  eyebrow: 'НАПОСЛЕДОК',
   title: 'Почти идеальное начинается после фиксации брони',
   body: 'Если хотите довести это до совершенства: после бронирования отелей и 4–6 якорных слотов следующий шаг — подневный сценарий с точным порядком районов, временем на переезды, одеждой на каждый день и запасным планом на дождь.',
   image: osakaNeon,

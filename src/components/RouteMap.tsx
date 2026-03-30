@@ -115,7 +115,7 @@ export function RouteMap() {
           }
           viewport={{ once: true, amount: 0.3 }}
         >
-          🚄 Shinkansen
+          🚄 Синкансэн
         </motion.text>
 
         {/* City dots and labels */}

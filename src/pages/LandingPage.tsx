@@ -206,7 +206,7 @@ export function LandingPage() {
         />
         <div className="hotel-tier-grid">
           <article className="soft-panel">
-            <p className="mini-label">ПОДИТОГ</p>
+            <p className="mini-label">ИТОГО</p>
             <p>{recommendedTier.subtotal}</p>
             <p className="muted">{recommendedTier.atmosphereNote}</p>
           </article>
@@ -353,7 +353,7 @@ export function LandingPage() {
         />
         <div className="dual-soft-panels">
           <article className="soft-panel">
-            <p className="mini-label">MUST PACK</p>
+            <p className="mini-label">ОБЯЗАТЕЛЬНО</p>
             <ul className="packing-list">
               {packingPolish.packThis.map((item) => (
                 <li key={item}>{item}</li>
@@ -361,7 +361,7 @@ export function LandingPage() {
             </ul>
           </article>
           <article className="soft-panel">
-            <p className="mini-label">PHOTO POLISH</p>
+            <p className="mini-label">ФОТОГЕНИЧНОСТЬ</p>
             <ul className="packing-list">
               {packingPolish.photoPolish.map((item) => (
                 <li key={item}>{item}</li>
@@ -371,7 +371,7 @@ export function LandingPage() {
         </div>
         {packingPolish.coupleLooks && (
           <article className="soft-panel couple-looks-panel">
-            <p className="mini-label">ПАРА: КООРДИНАЦИЯ БЕЗ MATCHING</p>
+            <p className="mini-label">ПАРА: КООРДИНАЦИЯ БЕЗ КОПИРОВАНИЯ</p>
             <ul className="packing-list">
               {packingPolish.coupleLooks.map((look) => (
                 <li key={look}>{look}</li>
@@ -450,7 +450,7 @@ export function LandingPage() {
             готовую сводку.
           </p>
           <Link to="/builder" className="builder-cta-link">
-            Открыть конфигуратор
+            Собрать свою поездку
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
