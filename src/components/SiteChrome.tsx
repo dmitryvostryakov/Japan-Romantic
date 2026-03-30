@@ -35,11 +35,11 @@ const navItems: NavItem[] = [
   { href: '#why-now', label: 'Почему сейчас', sections: ['why-now'] },
   { href: '#frame', label: 'Маршрут', sections: ['frame', 'hotels', 'budget'] },
   { href: '#cities', label: 'Города', sections: ['tokyo', 'kyoto', 'osaka'] },
-  { href: '#capsules', label: 'Гардероб', sections: ['capsules', 'packing'] },
-  { href: '#extras', label: 'Детали', sections: ['extras', 'links', 'reservations'] },
-  { href: '/builder', label: 'Конфигуратор', sections: ['builder'], route: '/builder' },
+  { href: '#capsules', label: 'Стиль', sections: ['capsules', 'packing'] },
+  { href: '#extras', label: 'На месте', sections: ['extras', 'links', 'reservations'] },
+  { href: '/builder', label: 'Сборка', sections: ['builder'], route: '/builder' },
   { href: '#after-dark', label: 'После заката', sections: ['after-dark'] },
-  { href: '#last-note', label: 'Финал', sections: ['last-note'] },
+  { href: '#last-note', label: 'Итог', sections: ['last-note'] },
 ]
 
 export function SiteChrome() {

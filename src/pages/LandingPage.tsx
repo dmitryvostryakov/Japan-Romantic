@@ -264,7 +264,7 @@ export function LandingPage() {
         <ChapterHeader
           eyebrow="БРОНИРОВАНИЯ"
           page="08"
-          title="Забронировать в первую очередь"
+          title="Бронируйте сейчас — потом будет поздно"
           description="Места, которые требуют предварительной записи. Чем раньше — тем лучше."
         />
         <LedgerTable
@@ -292,7 +292,7 @@ export function LandingPage() {
         <ChapterHeader
           eyebrow="ГАРДЕРОБ"
           page="09"
-          title="Капсулы, которые работают везде"
+          title="Три настроения — три капсулы"
           description="Три капсулы — три настроения. Каждая работает автономно и в паре."
         />
         <CapsuleStrip
@@ -438,10 +438,10 @@ export function LandingPage() {
         {...sectionReveal}
       >
         <ChapterHeader
-          eyebrow="КОНФИГУРАТОР"
+          eyebrow="СБОРКА"
           page="13"
           title="Соберите свою поездку"
-          description="Выберите отель, рестораны и активности — получите сводку с ценами."
+          description="Отели, рестораны, активности — соберите идеальную комбинацию за 5 минут."
         />
         <div className="builder-cta-card soft-panel">
           <p className="builder-cta-text">

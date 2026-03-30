@@ -44,10 +44,10 @@ export function BuilderPage() {
         {...sectionReveal}
       >
         <ChapterHeader
-          eyebrow="КОНФИГУРАТОР"
+          eyebrow="СБОРКА"
           page="13"
           title="Соберите свою поездку"
-          description="Выберите отель, рестораны и активности — получите сводку с ценами."
+          description="Отели, рестораны, активности — соберите идеальную комбинацию за 5 минут."
         />
         <TripBuilder />
       </motion.section>
