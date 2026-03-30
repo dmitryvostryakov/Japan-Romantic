@@ -159,7 +159,18 @@ html[data-theme] {
 /* ── Decorative Section Patterns ──────────────────────── */
 
 /* Seigaiha wave pattern (used on destinations & hotels sections) */
-.section-destinations::before,
+/* Destinations section has dark bg — use light-colored pattern */
+.section-destinations::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='80' r='38' fill='none' stroke='%23faf7f2' stroke-width='0.5'/%3E%3Ccircle cx='40' cy='80' r='28' fill='none' stroke='%23faf7f2' stroke-width='0.5'/%3E%3Ccircle cx='40' cy='80' r='18' fill='none' stroke='%23faf7f2' stroke-width='0.5'/%3E%3Ccircle cx='0' cy='80' r='38' fill='none' stroke='%23faf7f2' stroke-width='0.5'/%3E%3Ccircle cx='0' cy='80' r='28' fill='none' stroke='%23faf7f2' stroke-width='0.5'/%3E%3Ccircle cx='0' cy='80' r='18' fill='none' stroke='%23faf7f2' stroke-width='0.5'/%3E%3Ccircle cx='80' cy='80' r='38' fill='none' stroke='%23faf7f2' stroke-width='0.5'/%3E%3Ccircle cx='80' cy='80' r='28' fill='none' stroke='%23faf7f2' stroke-width='0.5'/%3E%3Ccircle cx='80' cy='80' r='18' fill='none' stroke='%23faf7f2' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+/* Hotels section has light bg — use dark-colored pattern */
 .section-hotels::before {
   content: '';
   position: absolute;
@@ -213,7 +224,11 @@ html[data-theme] {
 }
 
 /* Dark mode: invert pattern strokes */
-[data-theme='dark'] .section-destinations::before,
+/* Dark mode: destinations already uses light strokes, just reduce */
+[data-theme='dark'] .section-destinations::before {
+  opacity: 0.04;
+}
+
 [data-theme='dark'] .section-hotels::before {
   filter: invert(1);
   opacity: 0.025;

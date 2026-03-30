@@ -1,29 +1,54 @@
 import { motion, useReducedMotion } from 'framer-motion'
 
 const cities = [
-  { name: 'Токио', slug: 'tokyo', x: 470, y: 175 },
-  { name: 'Киото', slug: 'kyoto', x: 270, y: 230 },
-  { name: 'Осака', slug: 'osaka', x: 255, y: 260 },
+  { name: 'Токио', slug: 'tokyo', x: 510, y: 246, labelDx: 14, labelDy: 5 },
+  { name: 'Киото', slug: 'kyoto', x: 400, y: 318, labelDx: 14, labelDy: 5 },
+  { name: 'Осака', slug: 'osaka', x: 396, y: 338, labelDx: -54, labelDy: 5 },
 ] as const
 
-// Simplified Honshu island outline (recognizable silhouette)
-const honshuPath =
-  'M 520 60 Q 540 70 545 90 Q 548 110 535 130 Q 525 145 520 160 ' +
-  'Q 515 175 505 185 Q 495 195 490 210 Q 488 225 480 235 ' +
-  'Q 470 248 455 255 Q 440 262 425 268 Q 405 275 385 278 ' +
-  'Q 365 280 345 282 Q 325 284 305 285 Q 285 286 265 290 ' +
-  'Q 245 295 230 305 Q 215 315 205 325 Q 195 335 180 340 ' +
-  'Q 160 345 145 340 Q 130 335 125 320 Q 120 305 130 290 ' +
-  'Q 140 278 155 270 Q 170 262 185 255 Q 200 248 215 240 ' +
-  'Q 230 232 248 225 Q 265 218 280 210 Q 295 202 310 195 ' +
-  'Q 325 188 340 180 Q 355 172 370 165 Q 385 158 400 150 ' +
-  'Q 415 142 430 132 Q 445 120 455 108 Q 462 98 468 85 ' +
-  'Q 475 72 485 62 Q 500 55 520 60 Z'
+// Recognizable Japan archipelago — all four main islands
+// Hokkaido (top-right, diamond-ish shape with Oshima peninsula)
+const hokkaido =
+  'M 528 52 Q 545 42 565 45 Q 580 50 588 62 Q 594 76 590 92 ' +
+  'Q 585 106 572 114 Q 558 120 542 118 Q 530 114 522 104 ' +
+  'Q 515 92 514 78 Q 515 64 528 52 Z'
 
-// Route path: Tokyo -> Kyoto -> Osaka (smooth curve)
+// Honshu (main island — long curved shape NE to SW with Kanto bulge)
+const honshu =
+  'M 538 128 Q 548 122 556 130 Q 562 140 556 156 ' +
+  'Q 548 172 538 186 Q 530 198 524 208 ' +
+  'Q 518 218 514 230 Q 512 240 510 248 ' + // Kanto area (Tokyo)
+  'Q 506 256 500 262 Q 492 270 482 278 ' +
+  'Q 470 286 456 294 Q 442 300 428 306 ' +
+  'Q 414 312 402 318 Q 392 324 384 330 ' + // Kansai (Kyoto/Osaka)
+  'Q 374 338 362 344 Q 348 350 332 354 ' +
+  'Q 316 358 302 354 Q 290 348 282 338 ' + // Western tip
+  'Q 276 328 274 316 Q 274 304 280 294 ' +
+  'Q 288 284 300 278 Q 314 272 328 266 ' + // South coast
+  'Q 344 260 360 252 Q 376 244 390 236 ' +
+  'Q 404 228 416 218 Q 430 206 442 194 ' +
+  'Q 454 182 464 168 Q 474 154 486 142 ' +
+  'Q 500 132 516 126 Q 530 124 538 128 Z'
+
+// Shikoku (south of Honshu, oval-ish)
+const shikoku =
+  'M 382 346 Q 396 340 410 344 Q 422 350 424 362 ' +
+  'Q 424 374 414 380 Q 402 386 388 382 ' +
+  'Q 376 378 372 366 Q 370 354 376 346 Q 380 342 382 346 Z'
+
+// Kyushu (southwest, larger rounded shape)
+const kyushu =
+  'M 304 360 Q 318 352 334 356 Q 348 362 352 376 ' +
+  'Q 354 390 344 400 Q 332 408 316 406 ' +
+  'Q 302 402 296 390 Q 292 376 296 366 Q 300 358 304 360 Z'
+
+// Tsugaru Strait (gap between Hokkaido and Honshu)
+const straitLine = 'M 530 118 L 542 126'
+
+// Route path: Tokyo → Kyoto → Osaka (Shinkansen line along south coast)
 const routePath =
-  'M 470 175 Q 420 185 380 195 Q 340 210 310 220 Q 290 228 270 230 ' +
-  'L 265 240 Q 260 250 255 260'
+  'M 510 246 Q 490 256 470 268 Q 450 280 430 292 Q 415 304 400 318 ' +
+  'L 398 328 Q 397 334 396 338'
 
 function handleCityClick(slug: string) {
   document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth' })
@@ -35,45 +60,71 @@ export function RouteMap() {
   const pathAnimation = shouldReduceMotion
     ? { pathLength: 1, opacity: 1 }
     : {
-        pathLength: [0, 1],
-        opacity: [0, 1],
-        transition: { duration: 2, ease: 'easeInOut' as const },
+        pathLength: [0, 1] as [number, number],
+        opacity: [0, 1] as [number, number],
+        transition: { duration: 2.5, ease: 'easeInOut' as const },
       }
 
   return (
     <div className="route-map-wrapper">
+      <p className="route-map-title">Маршрут по Японии</p>
       <motion.svg
         className="route-map"
-        viewBox="0 0 600 400"
+        viewBox="240 30 380 400"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         role="img"
         aria-label="Маршрут: Токио — Киото — Осака"
       >
-        {/* Honshu island outline */}
-        <path
-          d={honshuPath}
-          className="route-map__island"
-          strokeWidth="1"
-          strokeLinejoin="round"
-        />
+        {/* Japan islands */}
+        <path d={hokkaido} className="route-map__island" strokeWidth="1.2" strokeLinejoin="round" />
+        <path d={honshu} className="route-map__island" strokeWidth="1.2" strokeLinejoin="round" />
+        <path d={shikoku} className="route-map__island route-map__island--minor" strokeWidth="0.8" strokeLinejoin="round" />
+        <path d={kyushu} className="route-map__island route-map__island--minor" strokeWidth="0.8" strokeLinejoin="round" />
+
+        {/* Strait marker */}
+        <path d={straitLine} className="route-map__strait" strokeWidth="0.5" strokeDasharray="2 2" />
 
         {/* Animated route line */}
         <motion.path
           d={routePath}
           className="route-map__route"
-          strokeWidth="2"
-          strokeDasharray="6 4"
+          strokeWidth="2.5"
+          strokeDasharray="8 5"
           strokeLinecap="round"
           fill="none"
           initial={shouldReduceMotion ? false : { pathLength: 0, opacity: 0 }}
           whileInView={pathAnimation}
-          viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.3 }}
         />
+
+        {/* Shinkansen icon along route */}
+        <motion.text
+          x="460"
+          y="282"
+          className="route-map__shinkansen-label"
+          initial={shouldReduceMotion ? false : { opacity: 0 }}
+          whileInView={
+            shouldReduceMotion
+              ? { opacity: 1 }
+              : { opacity: 1, transition: { delay: 2.2, duration: 0.6 } }
+          }
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          🚄 Shinkansen
+        </motion.text>
 
         {/* City dots and labels */}
         {cities.map((city, i) => (
           <g key={city.slug} className="route-map__city-group">
+            {/* Outer glow ring */}
+            <circle
+              cx={city.x}
+              cy={city.y}
+              r="12"
+              className="route-map__glow"
+            />
+
             {/* Pulse ring (hover) */}
             <circle
               cx={city.x}
@@ -86,7 +137,7 @@ export function RouteMap() {
             <motion.circle
               cx={city.x}
               cy={city.y}
-              r="4"
+              r="5"
               className="route-map__dot"
               initial={shouldReduceMotion ? false : { scale: 0, opacity: 0 }}
               whileInView={
@@ -96,19 +147,19 @@ export function RouteMap() {
                       scale: 1,
                       opacity: 1,
                       transition: {
-                        delay: 1.2 + i * 0.4,
-                        duration: 0.4,
+                        delay: 1.0 + i * 0.5,
+                        duration: 0.5,
                         ease: [0.22, 1, 0.36, 1],
                       },
                     }
               }
-              viewport={{ once: true, amount: 0.4 }}
+              viewport={{ once: true, amount: 0.3 }}
             />
 
             {/* City label */}
             <motion.text
-              x={city.x + (city.slug === 'osaka' ? -40 : 12)}
-              y={city.y + (city.slug === 'osaka' ? 8 : -10)}
+              x={city.x + city.labelDx}
+              y={city.y + city.labelDy}
               className="route-map__label"
               onClick={() => handleCityClick(city.slug)}
               initial={shouldReduceMotion ? false : { opacity: 0 }}
@@ -118,17 +169,24 @@ export function RouteMap() {
                   : {
                       opacity: 1,
                       transition: {
-                        delay: 1.4 + i * 0.4,
+                        delay: 1.2 + i * 0.5,
                         duration: 0.5,
                       },
                     }
               }
-              viewport={{ once: true, amount: 0.4 }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               {city.name}
             </motion.text>
           </g>
         ))}
+
+        {/* Compass rose */}
+        <g className="route-map__compass" transform="translate(565, 380)">
+          <line x1="0" y1="-12" x2="0" y2="12" className="route-map__compass-line" />
+          <line x1="-12" y1="0" x2="12" y2="0" className="route-map__compass-line" />
+          <text x="0" y="-16" textAnchor="middle" className="route-map__compass-n">N</text>
+        </g>
       </motion.svg>
     </div>
   )
