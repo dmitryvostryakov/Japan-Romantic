@@ -460,6 +460,10 @@ html {
   font-variant-numeric: tabular-nums;
 }
 
+.muted-col {
+  color: var(--muted);
+}
+
 .dual-soft-panels {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -1881,7 +1885,7 @@ html {
   margin-bottom: 0.75rem;
 }
 
-.city-hotel-jpy {
+.city-hotel-rub {
   font-family: var(--sans);
   font-weight: 700;
   font-size: 1.05rem;
@@ -1889,7 +1893,7 @@ html {
   font-feature-settings: 'tnum' 1;
 }
 
-.city-hotel-rub {
+.city-hotel-jpy {
   font-size: 0.8rem;
   color: var(--muted);
   font-feature-settings: 'tnum' 1;

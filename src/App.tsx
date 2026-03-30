@@ -207,16 +207,16 @@ function App() {
                   render: (row) => <span>{row.item}</span>,
                 },
                 {
-                  key: 'jpy',
-                  header: 'JPY',
-                  align: 'right',
-                  render: (row) => <span className="tabular">{row.jpy}</span>,
-                },
-                {
                   key: 'rub',
                   header: 'RUB',
                   align: 'right',
                   render: (row) => <span className="tabular">{row.rub}</span>,
+                },
+                {
+                  key: 'jpy',
+                  header: 'JPY',
+                  align: 'right',
+                  render: (row) => <span className="tabular muted-col">{row.jpy}</span>,
                 },
                 {
                   key: 'note',
@@ -271,16 +271,16 @@ function App() {
                   render: (item) => <span>{item.what}</span>,
                 },
                 {
-                  key: 'jpy',
-                  header: 'JPY',
-                  align: 'right',
-                  render: (item) => <span className="tabular">{item.jpy}</span>,
-                },
-                {
                   key: 'rub',
                   header: 'RUB',
                   align: 'right',
                   render: (item) => <span className="tabular">{item.rub}</span>,
+                },
+                {
+                  key: 'jpy',
+                  header: 'JPY',
+                  align: 'right',
+                  render: (item) => <span className="tabular muted-col">{item.jpy}</span>,
                 },
                 {
                   key: 'note',
@@ -833,8 +833,8 @@ function CitySection({
                       <p className="city-hotel-room">{hotel.roomType} · {hotel.nights}N</p>
                       <p className="city-hotel-mood">{hotel.mood}</p>
                       <div className="city-hotel-price">
+                        <span className="city-hotel-rub">₽{Math.round(hotel.jpyNumeric * 0.5152).toLocaleString('ru-RU')}</span>
                         <span className="city-hotel-jpy">{hotel.jpy}</span>
-                        <span className="city-hotel-rub">≈ ₽{Math.round(hotel.jpyNumeric * 0.5152).toLocaleString('ru-RU')}</span>
                       </div>
                       {hotel.features && hotel.features.length > 0 && (
                         <div className="city-hotel-features">

@@ -158,7 +158,7 @@ export function TripBuilder() {
                           <p className="builder-card-venue">{hotel.name}</p>
                           <p className="builder-card-mood">{hotel.mood}</p>
                           <p className="builder-card-total">
-                            {hotel.jpy} / {fmtRub(hotel.jpy)} / {hotel.nights}N
+                            {fmtRub(hotel.jpy)} ({hotel.jpy}) / {hotel.nights}N
                           </p>
                         </div>
                       </button>
@@ -183,7 +183,7 @@ export function TripBuilder() {
                               <p className="builder-card-venue">{r.venue}</p>
                               <p className="builder-card-mood">{r.what}</p>
                             </div>
-                            <p className="builder-card-total">{r.jpy} / {fmtRub(r.jpy)}</p>
+                            <p className="builder-card-total">{fmtRub(r.jpy)} ({r.jpy})</p>
                           </div>
                         </button>
                       ))}
@@ -208,7 +208,7 @@ export function TripBuilder() {
                             <p className="builder-card-mood">{a.description}</p>
                           </div>
                           {a.jpy && (
-                            <p className="builder-card-total">{a.jpy} / {fmtRub(a.jpy)}</p>
+                            <p className="builder-card-total">{fmtRub(a.jpy)} ({a.jpy})</p>
                           )}
                         </div>
                       </button>
@@ -250,7 +250,7 @@ export function TripBuilder() {
                         <div>
                           <h3>{hotel.name}</h3>
                           <p className="builder-card-mood">
-                            {hotel.nights}N — {hotel.jpy} / {fmtRub(hotel.jpy)}
+                            {hotel.nights}N — {fmtRub(hotel.jpy)} ({hotel.jpy})
                           </p>
                         </div>
                       </div>
@@ -261,7 +261,7 @@ export function TripBuilder() {
                         {cityRests.map((r) => (
                           <li key={r.id}>
                             <span>{r.venue} — {r.what}</span>
-                            <span className="tabular">{r.jpy} / {fmtRub(r.jpy)}</span>
+                            <span className="tabular">{fmtRub(r.jpy)} ({r.jpy})</span>
                           </li>
                         ))}
                       </ul>
@@ -272,14 +272,14 @@ export function TripBuilder() {
                         {cityActs.map((a) => (
                           <li key={a.id}>
                             <span>{a.title}</span>
-                            {a.jpy && <span className="tabular">{a.jpy} / {fmtRub(a.jpy)}</span>}
+                            {a.jpy && <span className="tabular">{fmtRub(a.jpy)} ({a.jpy})</span>}
                           </li>
                         ))}
                       </ul>
                     )}
 
                     <p className="builder-city-subtotal">
-                      Итого {city.label}: ¥{fmt(cityTotalJpy)} / ₽{fmt(jpyToRub(cityTotalJpy))}
+                      Итого {city.label}: ₽{fmt(jpyToRub(cityTotalJpy))} (¥{fmt(cityTotalJpy)})
                     </p>
                   </article>
                 )
@@ -294,9 +294,9 @@ export function TripBuilder() {
                   ¥{fmt(totalJpy)}
                 </p>
                 <div className="builder-total-breakdown">
-                  <span>Отели: ¥{fmt(hotelsJpy)} / ₽{fmt(jpyToRub(hotelsJpy))}</span>
-                  <span>Рестораны: ¥{fmt(restaurantsJpy)} / ₽{fmt(jpyToRub(restaurantsJpy))}</span>
-                  <span>Активности: ¥{fmt(activitiesJpy)} / ₽{fmt(jpyToRub(activitiesJpy))}</span>
+                  <span>Отели: ₽{fmt(jpyToRub(hotelsJpy))} (¥{fmt(hotelsJpy)})</span>
+                  <span>Рестораны: ₽{fmt(jpyToRub(restaurantsJpy))} (¥{fmt(restaurantsJpy)})</span>
+                  <span>Активности: ₽{fmt(jpyToRub(activitiesJpy))} (¥{fmt(activitiesJpy)})</span>
                 </div>
                 <p className="builder-fx-note">
                   Курс: ¥100 = ₽51.52
