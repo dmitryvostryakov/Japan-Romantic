@@ -223,136 +223,136 @@ const osakaNeon: ImageAsset = {
 /* ── hotel photos ──────────────────────────────────────────── */
 
 const hotelAoyama: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1746549855427-57e6da7040db?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Современный номер бутик-отеля с элегантной мебелью.',
-  creditLabel: 'Boutique room / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/a-modern-hotel-room-with-elegant-furnishings-Qvn9nTldQgc',
+  src: '/hotels/aoyama.jpg',
+  alt: 'THE AOYAMA GRAND HOTEL — номер с видом на Токио.',
+  creditLabel: 'The Aoyama Grand Hotel',
+  creditUrl: 'https://aoyamagrand.com',
 }
 
 const hotelSeiryu: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1752741030528-4472bfd660b3?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Коридор люксового отеля с видом на зелень.',
-  creditLabel: 'Hotel corridor / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/a-hallway-leads-to-a-view-of-lush-greenery-lz6k8rhBJIk',
+  src: '/hotels/seiryu.jpg',
+  alt: 'The Hotel Seiryu — номер в бывшей школе Кийомидзу.',
+  creditLabel: 'The Hotel Seiryu',
+  creditUrl: 'https://www.seiryukiyomizu.com',
 }
 
 const hotelSowaka: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1754668122695-7b32062f339f?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Традиционная японская комната с татами и сёдзи.',
-  creditLabel: 'Ryokan room / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/a-traditional-japanese-room-with-tatami-mats-and-shoji-screens-2WaUtK4lU5w',
+  src: '/hotels/sowaka.jpg',
+  alt: 'SOWAKA — традиционный номер в стиле сукия, Гион.',
+  creditLabel: 'SOWAKA',
+  creditUrl: 'https://sowaka.com',
 }
 
 const hotelShinmonzen: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1702014861736-d62834317c5e?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Номер отеля с большой кроватью и панорамным окном.',
-  creditLabel: 'Luxury room / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/a-hotel-room-with-a-large-bed-and-a-window-qbhF5gOzhVU',
+  src: '/hotels/aoyama.jpg',
+  alt: 'The Shinmonzen — арт-отель в Киото.',
+  creditLabel: 'The Shinmonzen',
+  creditUrl: 'https://theshinmonzen.com',
 }
 
 const hotelZentis: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1755613708939-d572099433ab?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Минималистичный номер с видом на город.',
-  creditLabel: 'City view room / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/modern-hotel-room-with-city-view-through-window-pRAs34PRUuU',
+  src: '/hotels/zentis.jpg',
+  alt: 'Zentis Osaka — минималистичный номер, дизайн Tara Bernerd.',
+  creditLabel: 'Zentis Osaka',
+  creditUrl: 'https://zentishotels.com',
 }
 
 const hotelTrunk: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1764445274404-f2e14fd3f20c?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Традиционная японская комната с перегородками сёдзи и татами.',
-  creditLabel: 'Japanese room / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/traditional-japanese-room-with-shoji-screens-and-tatami-mats-TeNtfZuCWe8',
+  src: '/hotels/trunk.jpg',
+  alt: 'TRUNK(HOTEL) — socialising hotel в Сибуя.',
+  creditLabel: 'TRUNK(HOTEL)',
+  creditUrl: 'https://trunk-hotel.com',
 }
 
 const hotelParkHyatt: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Люксовый номер отеля с панорамным видом на город.',
-  creditLabel: 'Luxury hotel room / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/1-aA2Fadydc',
+  src: '/hotels/park-hyatt.jpg',
+  alt: 'Park Hyatt Tokyo — обновлённый номер после реновации.',
+  creditLabel: 'Park Hyatt Tokyo',
+  creditUrl: 'https://www.hyatt.com/park-hyatt/tyoph-park-hyatt-tokyo',
 }
 
 const hotelMuji: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Минималистичный номер отеля в натуральных тонах.',
-  creditLabel: 'Minimalist room / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/lmFJOx7hPc4',
+  src: '/hotels/muji.jpg',
+  alt: 'MUJI HOTEL GINZA — минималистичный номер в стиле MUJI.',
+  creditLabel: 'MUJI HOTEL GINZA',
+  creditUrl: 'https://hotel.muji.com/ginza/',
 }
 
 const hotelK5: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Бутик-отель с дизайнерским интерьером.',
-  creditLabel: 'Boutique hotel / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/6atQNsjMoJc',
+  src: '/hotels/k5.jpg',
+  alt: 'Hotel K5 — интерьер в здании банка 1923 года, дизайн CKR.',
+  creditLabel: 'Hotel K5',
+  creditUrl: 'https://k5-tokyo.com',
 }
 
 const hotelNohga: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Современный номер отеля с мягким освещением.',
-  creditLabel: 'Modern hotel / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/1d_w7KFQCQA',
+  src: '/hotels/nohga.jpg',
+  alt: 'NOHGA HOTEL UENO — современный номер с артовым характером.',
+  creditLabel: 'NOHGA HOTEL UENO',
+  creditUrl: 'https://www.nohgahotel.com/ueno/',
 }
 
 const hotelSequence: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Стильный номер отеля с видом на парк.',
-  creditLabel: 'Hotel park view / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/w3eFhqXjkZE',
+  src: '/hotels/sequence.jpg',
+  alt: 'sequence MIYASHITA PARK — лайфстайл-отель над парком.',
+  creditLabel: 'sequence MIYASHITA PARK',
+  creditUrl: 'https://www.sequencehotels.com/miyashita-park/',
 }
 
 const hotelKanra: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Японский отель с элементами традиционного стиля.',
-  creditLabel: 'Japanese style hotel / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/eWqOgJ-lfiI',
+  src: '/hotels/kanra.jpg',
+  alt: 'Hotel Kanra Kyoto — номер в стиле machiya с татами.',
+  creditLabel: 'Hotel Kanra Kyoto',
+  creditUrl: 'https://www.uds-hotels.com/kanra/kyoto/',
 }
 
 const hotelAceKyoto: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Дизайнерский номер отеля с индустриальными элементами.',
-  creditLabel: 'Design hotel / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/mp3FjzfOv4A',
+  src: '/hotels/ace-kyoto.jpg',
+  alt: 'Ace Hotel Kyoto — интерьер от Kengo Kuma в историческом здании.',
+  creditLabel: 'Ace Hotel Kyoto',
+  creditUrl: 'https://acehotel.com/kyoto/',
 }
 
 const hotelGoodNature: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Эко-отель с натуральными материалами.',
-  creditLabel: 'Eco hotel / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/uVt3hJtFUF4',
+  src: '/hotels/good-nature.jpg',
+  alt: 'GOOD NATURE HOTEL KYOTO — эко-номер с натуральными материалами.',
+  creditLabel: 'GOOD NATURE HOTEL',
+  creditUrl: 'https://goodnaturehotels.com',
 }
 
 const hotelMitsui: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Роскошный номер отеля с видом на сад.',
-  creditLabel: 'Luxury garden view / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/5LOhydOtTKo',
+  src: '/hotels/mitsui.jpg',
+  alt: 'Hotel THE MITSUI KYOTO — люкс с видом на 300-летний сад.',
+  creditLabel: 'The Mitsui Kyoto',
+  creditUrl: 'https://www.hotelthemitsui.com/kyoto/',
 }
 
 const hotelWOsaka: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Номер отеля с современным дизайном.',
-  creditLabel: 'Modern luxury hotel / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/MyrgPCIqLcM',
+  src: '/hotels/w-osaka.jpg',
+  alt: 'W Osaka — фасад и интерьер Tadao Ando, Shinsaibashi.',
+  creditLabel: 'W Osaka',
+  creditUrl: 'https://www.marriott.com/hotels/travel/osawh-w-osaka/',
 }
 
 const hotelBoly: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Арт-отель с уникальным характером.',
-  creditLabel: 'Art hotel / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/KYxXMTpTzek',
+  src: '/hotels/boly.jpg',
+  alt: 'THE BOLY OSAKA — арт-отель в историческом здании у реки.',
+  creditLabel: 'THE BOLY OSAKA',
+  creditUrl: 'https://theboly.com',
 }
 
 const hotelConrad: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Панорамный вид из номера отеля.',
-  creditLabel: 'Hotel panorama / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/N5sWyz1LYQE',
+  src: '/hotels/conrad.jpg',
+  alt: 'Conrad Osaka — номер с панорамным видом на Наканосиму.',
+  creditLabel: 'Conrad Osaka',
+  creditUrl: 'https://www.hilton.com/conrad/osaka/',
 }
 
 const hotelMoxy: ImageAsset = {
-  src: 'https://images.unsplash.com/photo-1595576508898-0ad5c879a061?auto=format&fit=crop&fm=jpg&q=60&w=1200',
-  alt: 'Яркий лайфстайл-отель с креативным дизайном.',
-  creditLabel: 'Lifestyle hotel / Unsplash',
-  creditUrl: 'https://unsplash.com/photos/PtOfbGkU3uI',
+  src: '/hotels/moxy.jpg',
+  alt: 'Moxy Osaka Honmachi — яркий номер Marriott lifestyle.',
+  creditLabel: 'Moxy Osaka',
+  creditUrl: 'https://www.marriott.com/hotels/travel/osaxm-moxy-osaka-honmachi/',
 }
 
 export const whyNow = {
