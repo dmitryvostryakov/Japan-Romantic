@@ -34,6 +34,7 @@ import {
   LinkIndex,
 } from './components/SectionPrimitives'
 import { TripBuilder } from './components/TripBuilder'
+import { DestinationCard } from './components/DestinationCard'
 
 const revealEase = [0.22, 1, 0.36, 1] as const
 
@@ -84,6 +85,32 @@ function App() {
       <SiteChrome />
       <main>
         <HeroSection shouldReduceMotion={shouldReduceMotion} />
+
+        <motion.section
+          className="section section-destinations"
+          id="destinations"
+          {...sectionReveal}
+        >
+          <ChapterHeader
+            eyebrow="НАПРАВЛЕНИЯ"
+            page="00"
+            title="Три города, одна история"
+            description="Каждый город — отдельная глава вашего путешествия. Токио задаёт ритм, Киото замедляет время, Осака добавляет вкус."
+          />
+          <div className="destination-grid">
+            {cities.map((city) => (
+              <DestinationCard
+                key={city.slug}
+                imageSrc={city.image.src}
+                cityName={city.label}
+                description={city.theme}
+                onExplore={() => {
+                  document.getElementById(city.slug)?.scrollIntoView({ behavior: 'smooth' })
+                }}
+              />
+            ))}
+          </div>
+        </motion.section>
 
         <motion.section
           className="section section-why-now"

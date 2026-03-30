@@ -3,6 +3,233 @@
   overflow-x: clip;
 }
 
+/* ── Destination Card ───────────────────────────────────── */
+
+.destination-card {
+  position: relative;
+  width: 100%;
+  max-width: 38rem;
+  height: 520px;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.destination-card:focus-within {
+  outline: 2px solid var(--vermilion);
+  outline-offset: 3px;
+}
+
+.destination-card__image-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.destination-card__image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+.destination-card__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(20, 17, 14, 0.94) 0%,
+    rgba(20, 17, 14, 0.55) 50%,
+    rgba(20, 17, 14, 0.08) 100%
+  );
+  transition: background 0.4s ease-out;
+}
+
+.destination-card:hover .destination-card__overlay {
+  background: linear-gradient(
+    to top,
+    rgba(20, 17, 14, 0.96) 0%,
+    rgba(20, 17, 14, 0.4) 55%,
+    rgba(20, 17, 14, 0.05) 100%
+  );
+}
+
+.destination-card__content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.5rem;
+}
+
+.destination-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  background: rgba(196, 80, 60, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(196, 80, 60, 0.3);
+  color: #f0b8a8;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  width: fit-content;
+  margin-bottom: 1.25rem;
+}
+
+.destination-card__city {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+  font-weight: 600;
+  line-height: 1.05;
+  margin: 0 0 0.6rem;
+  color: var(--paper);
+  transition: text-shadow 0.4s ease-out;
+}
+
+.destination-card:hover .destination-card__city {
+  text-shadow: 0 0 48px rgba(196, 80, 60, 0.35);
+}
+
+.destination-card__desc {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(250, 247, 242, 0.8);
+  max-width: 26rem;
+  margin: 0 0 1.75rem;
+}
+
+.destination-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 48px;
+  padding: 0.85rem 2rem;
+  border: 1.5px solid rgba(196, 80, 60, 0.6);
+  border-radius: 0.35rem;
+  background: rgba(196, 80, 60, 0.08);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  width: fit-content;
+  transition:
+    background 0.25s ease-out,
+    border-color 0.25s ease-out,
+    box-shadow 0.25s ease-out;
+}
+
+.destination-card__cta:hover {
+  background: var(--vermilion);
+  border-color: var(--vermilion);
+  box-shadow: 0 4px 24px rgba(196, 80, 60, 0.45);
+}
+
+.destination-card__cta:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 2px;
+  background: var(--vermilion);
+}
+
+.destination-card__arrow {
+  display: inline-block;
+  transition: transform 0.25s ease-out;
+}
+
+.destination-card__cta:hover .destination-card__arrow {
+  transform: translateX(5px);
+}
+
+.destination-card__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: 1.25rem;
+  border: 1.5px solid rgba(196, 80, 60, 0.3);
+  box-shadow:
+    inset 0 1px 0 rgba(250, 247, 242, 0.06),
+    0 0 40px rgba(196, 80, 60, 0.15);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease-out;
+}
+
+/* ── Destinations section ──────────────────────────────── */
+
+.section-destinations {
+  background: var(--ink);
+  color: var(--paper);
+  padding: var(--section-gap) var(--content-pad);
+}
+
+.section-destinations .chapter-header {
+  color: var(--paper);
+}
+
+.section-destinations .chapter-meta span,
+.section-destinations .chapter-copy p {
+  color: rgba(250, 247, 242, 0.55);
+}
+
+.section-destinations .chapter-copy h2 {
+  color: var(--paper);
+}
+
+.destination-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  max-width: var(--content-width);
+  margin: 2.5rem auto 0;
+}
+
+@media (max-width: 1024px) {
+  .destination-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .destination-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .destination-card {
+    height: 440px;
+    max-width: none;
+  }
+
+  .destination-card__content {
+    padding: 1.75rem;
+  }
+}
+
+/* ── Reduced motion ────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .destination-card,
+  .destination-card__overlay,
+  .destination-card__city,
+  .destination-card__cta,
+  .destination-card__arrow,
+  .destination-card__glow {
+    transition: none !important;
+  }
+}
+
 /* ── Apple-style smooth scroll ────────────────────────────── */
 
 html {
