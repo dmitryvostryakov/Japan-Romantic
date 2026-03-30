@@ -32,17 +32,17 @@ for (const loc of japanMap.locations) {
 }
 
 // ── City positions (in @svg-maps/japan viewBox: 0 0 438 516) ──
-// Positioned at approximate geographic centers, not on coast
+// Derived from bounding-box centers of each prefecture's SVG path
 const cities = [
-  { name: 'Токио', slug: 'tokyo', x: 308, y: 280, labelDx: 8, labelDy: -6 },
-  { name: 'Киото', slug: 'kyoto', x: 228, y: 272, labelDx: 8, labelDy: -6 },
-  { name: 'Осака', slug: 'osaka', x: 230, y: 286, labelDx: -42, labelDy: 4 },
+  { name: 'Токио', slug: 'tokyo', x: 311, y: 283, labelDx: 8, labelDy: -6 },
+  { name: 'Киото', slug: 'kyoto', x: 233, y: 268, labelDx: 8, labelDy: -6 },
+  { name: 'Осака', slug: 'osaka', x: 232, y: 280, labelDx: -42, labelDy: 4 },
 ] as const
 
 // Route: Tokyo → Kyoto → Osaka (Tōkaidō Shinkansen)
 const routePath =
-  'M 308 280 Q 290 276 270 274 Q 254 272 240 272 ' +
-  'L 228 272 Q 230 278 230 284 L 230 286'
+  'M 311 283 Q 295 278 275 274 Q 258 270 245 268 ' +
+  'L 233 268 Q 233 273 232 278 L 232 280'
 
 function handleCityClick(slug: string) {
   document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth' })
@@ -104,8 +104,8 @@ export function RouteMap() {
 
         {/* Shinkansen icon along route */}
         <motion.text
-          x="272"
-          y="266"
+          x="268"
+          y="262"
           className="route-map__shinkansen-label"
           initial={shouldReduceMotion ? false : { opacity: 0 }}
           whileInView={
