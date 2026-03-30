@@ -34,15 +34,15 @@ for (const loc of japanMap.locations) {
 // ── City positions (in @svg-maps/japan viewBox: 0 0 438 516) ──
 // Derived from bounding-box centers of each prefecture's SVG path
 const cities = [
-  { name: 'Токио', slug: 'tokyo', x: 311, y: 283, labelDx: 8, labelDy: -6 },
-  { name: 'Киото', slug: 'kyoto', x: 233, y: 268, labelDx: 8, labelDy: -6 },
-  { name: 'Осака', slug: 'osaka', x: 232, y: 280, labelDx: -42, labelDy: 4 },
+  { name: 'Токио', slug: 'tokyo', x: 315, y: 256, labelDx: 6, labelDy: -5 },
+  { name: 'Киото', slug: 'kyoto', x: 239, y: 273, labelDx: 6, labelDy: -5 },
+  { name: 'Осака', slug: 'osaka', x: 234, y: 281, labelDx: -40, labelDy: 4 },
 ] as const
 
 // Route: Tokyo → Kyoto → Osaka (Tōkaidō Shinkansen)
 const routePath =
-  'M 311 283 Q 295 278 275 274 Q 258 270 245 268 ' +
-  'L 233 268 Q 233 273 232 278 L 232 280'
+  'M 315 256 Q 296 260 276 264 Q 260 268 250 271 ' +
+  'L 239 273 Q 237 276 235 279 L 234 281'
 
 function handleCityClick(slug: string) {
   document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth' })
@@ -64,7 +64,7 @@ export function RouteMap() {
       <p className="route-map-title">Маршрут по Японии</p>
       <motion.svg
         className="route-map"
-        viewBox="80 20 360 420"
+        viewBox="100 10 340 440"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         role="img"
@@ -105,7 +105,7 @@ export function RouteMap() {
         {/* Shinkansen icon along route */}
         <motion.text
           x="268"
-          y="262"
+          y="256"
           className="route-map__shinkansen-label"
           initial={shouldReduceMotion ? false : { opacity: 0 }}
           whileInView={
@@ -186,7 +186,7 @@ export function RouteMap() {
         ))}
 
         {/* Compass rose */}
-        <g className="route-map__compass" transform="translate(400, 400)">
+        <g className="route-map__compass" transform="translate(405, 415)">
           <line x1="0" y1="-10" x2="0" y2="10" className="route-map__compass-line" />
           <line x1="-10" y1="0" x2="10" y2="0" className="route-map__compass-line" />
           <text x="0" y="-14" textAnchor="middle" className="route-map__compass-n">N</text>
