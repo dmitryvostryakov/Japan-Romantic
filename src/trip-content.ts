@@ -93,7 +93,26 @@ export type CityChapter = {
   foodNotes?: FoodNote[]
   photoWalks?: PhotoWalk[]
   photoInspo?: PhotoInspiration[]
+  hotels?: CityHotelCard[]
   note: string
+}
+
+export type HotelAvailability = 'available' | 'sold-out' | 'limited'
+
+export type CityHotelCard = {
+  id: string
+  name: string
+  roomType: string
+  nights: number
+  jpy: string
+  jpyNumeric: number
+  mood: string
+  image?: ImageAsset
+  availability: HotelAvailability
+  availabilityNote?: string
+  bookingUrl?: string
+  features?: string[]
+  recommended?: boolean
 }
 
 export type WardrobeCapsule = {
@@ -245,6 +264,97 @@ const hotelTrunk: ImageAsset = {
   creditUrl: 'https://unsplash.com/photos/traditional-japanese-room-with-shoji-screens-and-tatami-mats-TeNtfZuCWe8',
 }
 
+const hotelParkHyatt: ImageAsset = {
+  src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&fm=jpg&q=60&w=1200',
+  alt: 'Люксовый номер отеля с панорамным видом на город.',
+  creditLabel: 'Luxury hotel room / Unsplash',
+  creditUrl: 'https://unsplash.com/photos/1-aA2Fadydc',
+}
+
+const hotelMuji: ImageAsset = {
+  src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&fm=jpg&q=60&w=1200',
+  alt: 'Минималистичный номер отеля в натуральных тонах.',
+  creditLabel: 'Minimalist room / Unsplash',
+  creditUrl: 'https://unsplash.com/photos/lmFJOx7hPc4',
+}
+
+const hotelK5: ImageAsset = {
+  src: 'https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?auto=format&fit=crop&fm=jpg&q=60&w=1200',
+  alt: 'Бутик-отель с дизайнерским интерьером.',
+  creditLabel: 'Boutique hotel / Unsplash',
+  creditUrl: 'https://unsplash.com/photos/6atQNsjMoJc',
+}
+
+const hotelNohga: ImageAsset = {
+  src: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&fm=jpg&q=60&w=1200',
+  alt: 'Современный номер отеля с мягким освещением.',
+  creditLabel: 'Modern hotel / Unsplash',
+  creditUrl: 'https://unsplash.com/photos/1d_w7KFQCQA',
+}
+
+const hotelSequence: ImageAsset = {
+  src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&fm=jpg&q=60&w=1200',
+  alt: 'Стильный номер отеля с видом на парк.',
+  creditLabel: 'Hotel park view / Unsplash',
+  creditUrl: 'https://unsplash.com/photos/w3eFhqXjkZE',
+}
+
+const hotelKanra: ImageAsset = {
+  src: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&fm=jpg&q=60&w=1200',
+  alt: 'Японский отель с элементами традиционного стиля.',
+  creditLabel: 'Japanese style hotel / Unsplash',
+  creditUrl: 'https://unsplash.com/photos/eWqOgJ-lfiI',
+}
+
+const hotelAceKyoto: ImageAsset = {
+  src: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&fm=jpg&q=60&w=1200',
+  alt: 'Дизайнерский номер отеля с индустриальными элементами.',
+  creditLabel: 'Design hotel / Unsplash',
+  creditUrl: 'https://unsplash.com/photos/mp3FjzfOv4A',
+}
+
+const hotelGoodNature: ImageAsset = {
+  src: 'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&fm=jpg&q=60&w=1200',
+  alt: 'Эко-отель с натуральными материалами.',
+  creditLabel: 'Eco hotel / Unsplash',
+  creditUrl: 'https://unsplash.com/photos/uVt3hJtFUF4',
+}
+
+const hotelMitsui: ImageAsset = {
+  src: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&fm=jpg&q=60&w=1200',
+  alt: 'Роскошный номер отеля с видом на сад.',
+  creditLabel: 'Luxury garden view / Unsplash',
+  creditUrl: 'https://unsplash.com/photos/5LOhydOtTKo',
+}
+
+const hotelWOsaka: ImageAsset = {
+  src: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&fm=jpg&q=60&w=1200',
+  alt: 'Номер отеля с современным дизайном.',
+  creditLabel: 'Modern luxury hotel / Unsplash',
+  creditUrl: 'https://unsplash.com/photos/MyrgPCIqLcM',
+}
+
+const hotelBoly: ImageAsset = {
+  src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&fm=jpg&q=60&w=1200',
+  alt: 'Арт-отель с уникальным характером.',
+  creditLabel: 'Art hotel / Unsplash',
+  creditUrl: 'https://unsplash.com/photos/KYxXMTpTzek',
+}
+
+const hotelConrad: ImageAsset = {
+  src: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&fm=jpg&q=60&w=1200',
+  alt: 'Панорамный вид из номера отеля.',
+  creditLabel: 'Hotel panorama / Unsplash',
+  creditUrl: 'https://unsplash.com/photos/N5sWyz1LYQE',
+}
+
+const hotelMoxy: ImageAsset = {
+  src: 'https://images.unsplash.com/photo-1595576508898-0ad5c879a061?auto=format&fit=crop&fm=jpg&q=60&w=1200',
+  alt: 'Яркий лайфстайл-отель с креативным дизайном.',
+  creditLabel: 'Lifestyle hotel / Unsplash',
+  creditUrl: 'https://unsplash.com/photos/PtOfbGkU3uI',
+}
+
 export const whyNow = {
   eyebrow: 'ПОЧЕМУ СЕЙЧАС',
   title: 'Окно, которое скоро закроется',
@@ -304,7 +414,7 @@ export const tripFrame = {
 export const versionNotes = {
   feel: 'Девять ночей, три города, одно настроение: неспешно, красиво, с правильным светом утром и хорошим столом вечером. Всё ниже собрано так, чтобы вы не думали о логистике — только о друг друге и о том, куда падает свет.',
   hotelPick:
-    'Лучший общий сценарий по соотношению вкуса, комфорта и расходов: Aoyama Grand / Hotel Seiryu / Zentis Osaka. Сильнее по духу Киото — SOWAKA; сильнее по wow — The Shinmonzen. Но именно Tier A сейчас выглядит самым умным и самым вашим.',
+    'Дизайн-оптимум: MUJI HOTEL GINZA / Hotel Kanra / Zentis — стиль, характер и вдвое меньше затрат. Premium: Aoyama Grand / Hotel Seiryu / Zentis — максимум видов и атмосферы. Подробные карточки — в секции каждого города.',
 }
 
 export const hotelTiers: Array<
@@ -356,9 +466,9 @@ export const hotelTiers: Array<
 ]
 
 export const recommendedTier = {
-  title: 'Tier A — Aoyama Grand / Hotel Seiryu / Zentis',
-  why: 'Токио остаётся стильным и молодым, Киото даёт лучшие виды и драму света без ценника Shinmonzen, Осака держит финал спокойным и логистически чистым под KIX.',
-  subtotal: 'Итого отели: ¥765 348 / ₽394 274',
+  title: 'Два сценария — подробные карточки в секциях городов ниже',
+  why: 'Дизайн-оптимум: MUJI HOTEL GINZA / Hotel Kanra / Zentis — стиль без переплаты, в 1.5–2× дешевле premium-варианта. Premium: Aoyama Grand / Hotel Seiryu / Zentis — максимум атмосферы и видов.',
+  subtotal: 'Дизайн-оптимум ¥598 000 / ₽308 K · Premium ¥1 138 100 / ₽586 K',
   atmosphereNote:
     'Ставка по атмосфере: лучше один сильный вечер в Киото, чем равномерно переплатить везде.',
   bookingOrder: [
@@ -396,10 +506,10 @@ export const budgetRows: Array<
   },
   {
     id: 'budget-hotels',
-    item: 'Отели Tier A',
-    jpy: '¥765 348',
-    rub: '₽394 274',
-    note: 'рекомендованный набор отелей',
+    item: 'Отели (дизайн-оптимум → premium)',
+    jpy: '¥598 000 – ¥1 138 100',
+    rub: '₽308 K – ₽586 K',
+    note: 'MUJI+Kanra+Zentis → Aoyama+Seiryu+Zentis',
   },
   {
     id: 'budget-green-car',
@@ -438,24 +548,24 @@ export const budgetRows: Array<
   },
   {
     id: 'budget-land-total',
-    item: 'LAND TOTAL, TIER A',
-    jpy: '¥965 628',
-    rub: '₽497 449',
+    item: 'LAND TOTAL',
+    jpy: '¥798 000 – ¥1 338 000',
+    rub: '₽411 K – ₽689 K',
     note: 'без авиабилетов и дневного буфера',
   },
   {
     id: 'budget-land-buffer',
     item: 'LAND TOTAL + BUFFER',
-    jpy: '¥1 085 628–¥1 145 628',
-    rub: '₽559 268–₽590 177',
+    jpy: '¥918 000 – ¥1 518 000',
+    rub: '₽473 K – ₽782 K',
     note: 'общая поездка за двоих',
   },
   {
     id: 'budget-grand-total',
     item: 'FLIGHTS + LAND TOTAL',
     jpy: '—',
-    rub: '₽784 930–₽815 839',
-    note: 'оптимум по бюджету',
+    rub: '₽699 K – ₽1 008 K',
+    note: 'диапазон зависит от выбора отелей',
   },
 ]
 
@@ -698,6 +808,95 @@ export const cities: CityChapter[] = [
           { location: 'Aoyama backstreets', idea: 'чистые фасады, минималистичные витрины, почти нет машин — идеально для lookbook-серии', image: { src: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&fm=jpg&q=60&w=800', alt: 'Минималистичная улочка Аояма с чистыми фасадами', creditLabel: 'Aoyama / Clay Banks', creditUrl: 'https://unsplash.com/photos/aoyama-street' } },
           { location: 'Rainbow Bridge / Odaiba', idea: 'мост + залив + силуэт города; вечерний контровой свет, ветер в волосах', image: { src: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&fm=jpg&q=60&w=800', alt: 'Радужный мост и силуэт Токио на закате', creditLabel: 'Rainbow Bridge / Louie Martinez', creditUrl: 'https://unsplash.com/photos/tokyo-rainbow-bridge-sunset' } },
         ],
+      },
+    ],
+    hotels: [
+      {
+        id: 'tokyo-aoyama',
+        name: 'THE AOYAMA GRAND HOTEL',
+        roomType: 'Deluxe Twin',
+        nights: 4,
+        jpy: '¥580 400',
+        jpyNumeric: 580400,
+        mood: 'Стильный, молодой, The Top rooftop с видом на весь Токио',
+        image: hotelAoyama,
+        availability: 'limited',
+        availabilityNote: 'Осталось 2 номера!',
+        features: ['rooftop bar', 'Omotesando', 'вид на город'],
+        recommended: true,
+      },
+      {
+        id: 'tokyo-park-hyatt',
+        name: 'Park Hyatt Tokyo',
+        roomType: 'Park King',
+        nights: 4,
+        jpy: '¥520 000',
+        jpyNumeric: 520000,
+        mood: 'Lost in Translation, легендарный New York Bar на 52-м этаже',
+        image: hotelParkHyatt,
+        availability: 'available',
+        features: ['52-й этаж', 'бассейн', 'Shinjuku'],
+      },
+      {
+        id: 'tokyo-muji',
+        name: 'MUJI HOTEL GINZA',
+        roomType: 'Type E (36m²)',
+        nights: 4,
+        jpy: '¥280 000',
+        jpyNumeric: 280000,
+        mood: 'Чистый минимализм MUJI прямо над флагманом в Ginza',
+        image: hotelMuji,
+        availability: 'available',
+        features: ['минимализм', 'Ginza', 'MUJI flagship'],
+        recommended: true,
+      },
+      {
+        id: 'tokyo-k5',
+        name: 'Hotel K5 Nihonbashi',
+        roomType: 'K5 Room (38m²)',
+        nights: 4,
+        jpy: '¥320 000',
+        jpyNumeric: 320000,
+        mood: 'Банк 1923 года, скандинавско-японский дизайн, всего 20 номеров',
+        image: hotelK5,
+        availability: 'available',
+        availabilityNote: 'Всего 20 номеров',
+        features: ['бутик', 'Nihonbashi', 'историческое здание'],
+      },
+      {
+        id: 'tokyo-nohga',
+        name: 'NOHGA HOTEL UENO',
+        roomType: 'Deluxe Twin (36m²)',
+        nights: 4,
+        jpy: '¥200 000',
+        jpyNumeric: 200000,
+        mood: 'Арт-район Уэно, локальный крафт и культура',
+        image: hotelNohga,
+        availability: 'available',
+        features: ['арт-район', 'Ueno', 'крафт'],
+      },
+      {
+        id: 'tokyo-sequence',
+        name: 'sequence MIYASHITA PARK',
+        roomType: 'Park View',
+        nights: 4,
+        jpy: '¥240 000',
+        jpyNumeric: 240000,
+        mood: 'Над парком Miyashita, Shibuya lifestyle, вид на город',
+        image: hotelSequence,
+        availability: 'available',
+        features: ['Shibuya', 'вид на парк', 'lifestyle'],
+      },
+      {
+        id: 'tokyo-trunk',
+        name: 'TRUNK(HOTEL)',
+        roomType: 'Trunk Suite',
+        nights: 4,
+        jpy: '¥174 720',
+        jpyNumeric: 174720,
+        mood: 'Socialising hotel в Shibuya — со вкусом и характером',
+        image: hotelTrunk,
+        availability: 'sold-out',
       },
     ],
     note: 'Лучшие токийские кадры — скорее editorial, чем исторические. Рассвет — для тихих улиц, не для музеев. Nezu — план на позднее утро с мягким светом, не на рассвет.',
@@ -970,6 +1169,93 @@ export const cities: CityChapter[] = [
         ],
       },
     ],
+    hotels: [
+      {
+        id: 'kyoto-seiryu',
+        name: 'The Hotel Seiryu',
+        roomType: 'Deluxe King',
+        nights: 3,
+        jpy: '¥460 600',
+        jpyNumeric: 460600,
+        mood: 'Бывшая начальная школа, лучшие виды на Хигасияму и пагоду',
+        image: hotelSeiryu,
+        availability: 'available',
+        features: ['Higashiyama', 'вид на пагоду', 'rooftop'],
+        recommended: true,
+      },
+      {
+        id: 'kyoto-sowaka',
+        name: 'SOWAKA',
+        roomType: 'Deluxe Open-air Bath',
+        nights: 3,
+        jpy: '¥1 012 813',
+        jpyNumeric: 1012813,
+        mood: 'Рёкан-романтика, онсэн в номере, дух старого Гиона',
+        image: hotelSowaka,
+        availability: 'available',
+        features: ['рёкан', 'онсэн', 'Gion'],
+      },
+      {
+        id: 'kyoto-mitsui',
+        name: 'The Mitsui Kyoto',
+        roomType: 'Deluxe Garden',
+        nights: 3,
+        jpy: '¥540 000',
+        jpyNumeric: 540000,
+        mood: 'Внутренний сад 300 лет, онсэн, абсолютная тишина',
+        image: hotelMitsui,
+        availability: 'available',
+        features: ['исторический сад', 'онсэн', 'Nijo'],
+      },
+      {
+        id: 'kyoto-kanra',
+        name: 'Hotel Kanra Kyoto',
+        roomType: 'Kanra Twin (46m²)',
+        nights: 3,
+        jpy: '¥221 000',
+        jpyNumeric: 221000,
+        mood: 'Machiya-стиль с татами + модерн, просторные номера у Gojo',
+        image: hotelKanra,
+        availability: 'available',
+        features: ['machiya', 'татами', '46m²', 'Gojo'],
+        recommended: true,
+      },
+      {
+        id: 'kyoto-ace',
+        name: 'Ace Hotel Kyoto',
+        roomType: 'Ace King',
+        nights: 3,
+        jpy: '¥145 000',
+        jpyNumeric: 145000,
+        mood: 'Kengo Kuma, бывшая телефонная станция, творческий вайб',
+        image: hotelAceKyoto,
+        availability: 'available',
+        features: ['Kengo Kuma', 'дизайн', 'бар'],
+      },
+      {
+        id: 'kyoto-good-nature',
+        name: 'GOOD NATURE HOTEL',
+        roomType: 'Superior (30m²)',
+        nights: 3,
+        jpy: '¥105 000',
+        jpyNumeric: 105000,
+        mood: 'Эко-дизайн, Shijo, ресторан с видом',
+        image: hotelGoodNature,
+        availability: 'available',
+        features: ['эко', 'Shijo', 'wellness'],
+      },
+      {
+        id: 'kyoto-shinmonzen',
+        name: 'The Shinmonzen',
+        roomType: 'WASHI Suite',
+        nights: 3,
+        jpy: '¥621 438',
+        jpyNumeric: 621438,
+        mood: 'Арт-мир, Jean-Georges внизу, максимальный wow',
+        image: hotelShinmonzen,
+        availability: 'sold-out',
+      },
+    ],
     note: 'Киото — место, где поездка становится по-настоящему эмоциональной. Рассвет здесь важнее, чем где-либо. И ещё: уважайте знаки «без фото» / «вход запрещён» на частных улочках Гион.',
   },
   {
@@ -1188,6 +1474,69 @@ export const cities: CityChapter[] = [
           { location: 'Osaka Castle южный ров', idea: 'каменные стены + вода + отражения — строгий, спокойный фон; лучше всего утром', image: { src: 'https://images.unsplash.com/photo-1590253230532-a67f6bc61c9e?auto=format&fit=crop&fm=jpg&q=60&w=800', alt: 'Каменные стены замка Осака и ров с отражениями', creditLabel: 'Osaka Castle / Jérémy Stenuit', creditUrl: 'https://unsplash.com/photos/osaka-castle' } },
           { location: 'Amerikamura', idea: 'стрит-арт стены, граффити, винтажные витрины — casual streetwear editorial; днём при рассеянном свете', image: { src: 'https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?auto=format&fit=crop&fm=jpg&q=60&w=800', alt: 'Стрит-арт и граффити в Америкамуре', creditLabel: 'Amerikamura / Banter Snaps', creditUrl: 'https://unsplash.com/photos/amerikamura-osaka' } },
         ],
+      },
+    ],
+    hotels: [
+      {
+        id: 'osaka-zentis',
+        name: 'Zentis Osaka',
+        roomType: 'Corner Studio Twin',
+        nights: 2,
+        jpy: '¥97 100',
+        jpyNumeric: 97100,
+        mood: 'Минималистичный дизайн Palace Hotel Group, бар UPSTAIRZ',
+        image: hotelZentis,
+        availability: 'available',
+        features: ['дизайн', 'Kitahama', 'UPSTAIRZ'],
+        recommended: true,
+      },
+      {
+        id: 'osaka-w',
+        name: 'W Osaka',
+        roomType: 'Wonderful King',
+        nights: 2,
+        jpy: '¥110 000',
+        jpyNumeric: 110000,
+        mood: 'Tadao Ando, неон, rooftop, Shinsaibashi',
+        image: hotelWOsaka,
+        availability: 'available',
+        features: ['Tadao Ando', 'rooftop', 'Shinsaibashi'],
+      },
+      {
+        id: 'osaka-boly',
+        name: 'THE BOLY OSAKA',
+        roomType: 'River View',
+        nights: 2,
+        jpy: '¥73 000',
+        jpyNumeric: 73000,
+        mood: 'Арт-отель у реки, историческое здание, терраса',
+        image: hotelBoly,
+        availability: 'available',
+        features: ['арт', 'река', 'терраса'],
+      },
+      {
+        id: 'osaka-conrad',
+        name: 'Conrad Osaka',
+        roomType: 'King Deluxe',
+        nights: 2,
+        jpy: '¥160 000',
+        jpyNumeric: 160000,
+        mood: 'Панорама Наканосимы, 40-й этаж, Atmos Dining',
+        image: hotelConrad,
+        availability: 'available',
+        features: ['40-й этаж', 'панорама', 'Nakanoshima'],
+      },
+      {
+        id: 'osaka-moxy',
+        name: 'Moxy Osaka Honmachi',
+        roomType: 'Moxy Double',
+        nights: 2,
+        jpy: '¥40 000',
+        jpyNumeric: 40000,
+        mood: 'Яркий лайфстайл Marriott, компактный и весёлый',
+        image: hotelMoxy,
+        availability: 'available',
+        features: ['lifestyle', 'Honmachi', 'Marriott'],
       },
     ],
     note: 'Осака здесь не для торжественности. Используйте её для еды, речного света, одного чистого кадра с горизонтом и плавного разгона к раннему вылету из KIX.',
@@ -1578,20 +1927,36 @@ export const builderCities: CityBuilderData[] = [
     dateRange: '10–14 May',
     hotels: [
       {
+        id: 'tokyo-muji',
+        name: 'MUJI HOTEL GINZA',
+        nights: 4,
+        jpy: '¥280 000',
+        mood: 'минимализм MUJI, Ginza — дизайн-оптимум',
+        image: hotelMuji,
+      },
+      {
         id: 'tokyo-aoyama',
         name: 'THE AOYAMA GRAND HOTEL',
         nights: 4,
-        jpy: '¥376 948',
+        jpy: '¥580 400',
         mood: 'стильный, молодой, вид на город с The Top',
         image: hotelAoyama,
       },
       {
-        id: 'tokyo-trunk',
-        name: 'TRUNK (HOTEL)',
+        id: 'tokyo-k5',
+        name: 'Hotel K5 Nihonbashi',
         nights: 4,
-        jpy: '¥174 720',
-        mood: 'дешевле, но со вкусом — Shibuya socialising hotel',
-        image: hotelTrunk,
+        jpy: '¥320 000',
+        mood: 'банк 1923г., скандинавско-японский дизайн',
+        image: hotelK5,
+      },
+      {
+        id: 'tokyo-nohga',
+        name: 'NOHGA HOTEL UENO',
+        nights: 4,
+        jpy: '¥200 000',
+        mood: 'арт-район Уэно, локальный крафт',
+        image: hotelNohga,
       },
     ],
     activities: [
@@ -1608,28 +1973,36 @@ export const builderCities: CityBuilderData[] = [
     dateRange: '14–17 May',
     hotels: [
       {
+        id: 'kyoto-kanra',
+        name: 'Hotel Kanra Kyoto',
+        nights: 3,
+        jpy: '¥221 000',
+        mood: 'machiya + модерн, 46m² — дизайн-оптимум',
+        image: hotelKanra,
+      },
+      {
         id: 'kyoto-seiryu',
         name: 'The Hotel Seiryu',
         nights: 3,
-        jpy: '¥198 000',
+        jpy: '¥460 600',
         mood: 'лучшие виды, фотогеничный, отличная база',
         image: hotelSeiryu,
       },
       {
-        id: 'kyoto-sowaka',
-        name: 'SOWAKA',
+        id: 'kyoto-ace',
+        name: 'Ace Hotel Kyoto',
         nights: 3,
-        jpy: '¥577 041',
-        mood: 'характер старого Киото, рёкан-романтика, онсэн в номере',
-        image: hotelSowaka,
+        jpy: '¥145 000',
+        mood: 'Kengo Kuma, творческий вайб, отличный бар',
+        image: hotelAceKyoto,
       },
       {
-        id: 'kyoto-shinmonzen',
-        name: 'The Shinmonzen',
+        id: 'kyoto-good-nature',
+        name: 'GOOD NATURE HOTEL',
         nights: 3,
-        jpy: '¥621 438–¥761 438',
-        mood: 'арт-мир, максимальный wow, Jean-Georges внизу',
-        image: hotelShinmonzen,
+        jpy: '¥105 000',
+        mood: 'эко-дизайн, Shijo, wellness',
+        image: hotelGoodNature,
       },
     ],
     activities: [
@@ -1649,9 +2022,25 @@ export const builderCities: CityBuilderData[] = [
         id: 'osaka-zentis',
         name: 'Zentis Osaka',
         nights: 2,
-        jpy: '¥190 400',
-        mood: 'минималистичный, удобная база под KIX',
+        jpy: '¥97 100',
+        mood: 'минималистичный дизайн, UPSTAIRZ bar',
         image: hotelZentis,
+      },
+      {
+        id: 'osaka-boly',
+        name: 'THE BOLY OSAKA',
+        nights: 2,
+        jpy: '¥73 000',
+        mood: 'арт-отель у реки, Instagram-worthy',
+        image: hotelBoly,
+      },
+      {
+        id: 'osaka-moxy',
+        name: 'Moxy Osaka Honmachi',
+        nights: 2,
+        jpy: '¥40 000',
+        mood: 'яркий лайфстайл Marriott',
+        image: hotelMoxy,
       },
     ],
     activities: [
@@ -1688,4 +2077,17 @@ export const imageCredits = [
   hotelShinmonzen,
   hotelZentis,
   hotelTrunk,
+  hotelParkHyatt,
+  hotelMuji,
+  hotelK5,
+  hotelNohga,
+  hotelSequence,
+  hotelKanra,
+  hotelAceKyoto,
+  hotelGoodNature,
+  hotelMitsui,
+  hotelWOsaka,
+  hotelBoly,
+  hotelConrad,
+  hotelMoxy,
 ]

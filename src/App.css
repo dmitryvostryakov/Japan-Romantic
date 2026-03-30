@@ -1750,6 +1750,189 @@ html {
   color: var(--ink-soft, rgba(20, 17, 14, 0.72));
 }
 
+/* ── City Hotel Cards ────────────────────────────────────── */
+
+.city-hotels-section {
+  margin-top: 2.5rem;
+}
+
+.city-hotels-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.city-hotel-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.city-hotel-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.city-hotel-card.is-recommended {
+  border-left: 3px solid var(--vermilion);
+}
+
+.city-hotel-card.is-sold-out {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.city-hotel-card.is-sold-out:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.city-hotel-image {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.city-hotel-card.is-sold-out .city-hotel-image img {
+  filter: grayscale(1);
+}
+
+.city-hotel-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.city-hotel-card:hover .city-hotel-image img {
+  transform: scale(1.04);
+}
+
+.city-hotel-badge {
+  position: absolute;
+  top: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.badge-sold-out,
+.badge-limited {
+  right: 0.75rem;
+}
+
+.badge-recommended {
+  left: 0.75rem;
+}
+
+.badge-sold-out {
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+
+.badge-limited {
+  background: rgba(196, 80, 60, 0.9);
+  color: #fff;
+}
+
+.badge-recommended {
+  background: var(--vermilion);
+  color: #fff;
+}
+
+.city-hotel-body {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.city-hotel-name {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.city-hotel-room {
+  font-size: 0.82rem;
+  color: var(--muted-strong);
+  margin: 0 0 0.5rem;
+}
+
+.city-hotel-mood {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0 0 0.75rem;
+  line-height: 1.45;
+}
+
+.city-hotel-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.city-hotel-jpy {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+  font-feature-settings: 'tnum' 1;
+}
+
+.city-hotel-rub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-feature-settings: 'tnum' 1;
+}
+
+.city-hotel-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.city-hotel-tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  background: var(--paper-deep);
+  border-radius: 3px;
+  font-size: 0.72rem;
+  color: var(--muted-strong);
+  letter-spacing: 0.02em;
+}
+
+/* ── City Hotels Dark Mode ──────────────────────────────── */
+
+[data-theme='dark'] .city-hotel-card {
+  background: var(--paper-deep);
+}
+
+[data-theme='dark'] .city-hotel-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .city-hotel-tag {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ── City Hotels Mobile ─────────────────────────────────── */
+
+@media (max-width: 820px) {
+  .city-hotels-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ── Suggested Days ───────────────────────────────────────── */
 
 .suggested-days-section {

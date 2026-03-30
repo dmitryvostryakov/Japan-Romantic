@@ -14,7 +14,6 @@ import {
   cities,
   extras,
   hero,
-  hotelTiers,
   imageCredits,
   lastNote,
   packingPolish,
@@ -169,38 +168,6 @@ function App() {
 
           <div className="section-stack">
             <p className="lede">{versionNotes.hotelPick}</p>
-
-            <div className="hotel-tier-grid">
-              {hotelTiers.map((tier) => (
-                <article key={tier.id} className="hotel-tier-card">
-                  {tier.image && (
-                    <div className="hotel-tier-image">
-                      <img
-                        src={tier.image.src}
-                        alt={tier.image.alt}
-                        loading="lazy"
-                      />
-                    </div>
-                  )}
-                  <div className="hotel-tier-body">
-                    <p className="mini-label">{tier.tier}</p>
-                    <h3 className="hotel-tier-stack">{tier.stack}</h3>
-                    <p className="hotel-tier-mood">{tier.mood}</p>
-                    <p className="hotel-tier-total tabular">{tier.subtotal}</p>
-                    {tier.bookingUrl && (
-                      <a
-                        className="hotel-tier-link"
-                        href={tier.bookingUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Бронировать
-                      </a>
-                    )}
-                  </div>
-                </article>
-              ))}
-            </div>
 
             <div className="dual-soft-panels">
               <article className="soft-panel quote-panel">
@@ -829,6 +796,60 @@ function CitySection({
             description={`Утренний золотой час: ${city.goldenHour.am} • Вечерний золотой час: ${city.goldenHour.pm} • база: ${city.base}`}
           />
         </ScrollBlock>
+
+        {city.hotels && city.hotels.length > 0 && (
+          <ScrollBlock variants={rv}>
+            <div className="city-hotels-section">
+              <p className="mini-label">ОТЕЛИ</p>
+              <motion.div
+                className="city-hotels-grid"
+                variants={shouldReduceMotion ? undefined : appleStagger}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.05 }}
+              >
+                {city.hotels.map((hotel) => (
+                  <motion.article
+                    key={hotel.id}
+                    className={`city-hotel-card${hotel.availability === 'sold-out' ? ' is-sold-out' : ''}${hotel.recommended ? ' is-recommended' : ''}`}
+                    variants={appleChild}
+                  >
+                    {hotel.image && (
+                      <div className="city-hotel-image">
+                        <img src={hotel.image.src} alt={hotel.image.alt} loading="lazy" />
+                        {hotel.availability === 'sold-out' && (
+                          <span className="city-hotel-badge badge-sold-out">SOLD OUT</span>
+                        )}
+                        {hotel.availability === 'limited' && (
+                          <span className="city-hotel-badge badge-limited">{hotel.availabilityNote ?? 'LIMITED'}</span>
+                        )}
+                        {hotel.recommended && hotel.availability !== 'sold-out' && (
+                          <span className="city-hotel-badge badge-recommended">★ РЕКОМЕНДУЕМ</span>
+                        )}
+                      </div>
+                    )}
+                    <div className="city-hotel-body">
+                      <h4 className="city-hotel-name">{hotel.name}</h4>
+                      <p className="city-hotel-room">{hotel.roomType} · {hotel.nights}N</p>
+                      <p className="city-hotel-mood">{hotel.mood}</p>
+                      <div className="city-hotel-price">
+                        <span className="city-hotel-jpy">{hotel.jpy}</span>
+                        <span className="city-hotel-rub">≈ ₽{Math.round(hotel.jpyNumeric * 0.5152).toLocaleString('ru-RU')}</span>
+                      </div>
+                      {hotel.features && hotel.features.length > 0 && (
+                        <div className="city-hotel-features">
+                          {hotel.features.map((f) => (
+                            <span key={f} className="city-hotel-tag">{f}</span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </motion.article>
+                ))}
+              </motion.div>
+            </div>
+          </ScrollBlock>
+        )}
 
         {city.suggestedDays && city.suggestedDays.length > 0 && (
           <ScrollBlock variants={rv}>
