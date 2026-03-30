@@ -1,9 +1,9 @@
 import { motion, useReducedMotion } from 'framer-motion'
 
 const cities = [
-  { name: 'Токио', slug: 'tokyo', x: 482, y: 278, labelDx: 10, labelDy: -8 },
-  { name: 'Киото', slug: 'kyoto', x: 404, y: 308, labelDx: 10, labelDy: -8 },
-  { name: 'Осака', slug: 'osaka', x: 398, y: 318, labelDx: -52, labelDy: 5 },
+  { name: 'Токио', slug: 'tokyo', x: 476, y: 262, labelDx: 10, labelDy: -8 },
+  { name: 'Киото', slug: 'kyoto', x: 400, y: 284, labelDx: 10, labelDy: -8 },
+  { name: 'Осака', slug: 'osaka', x: 394, y: 302, labelDx: -52, labelDy: 5 },
 ] as const
 
 // ── Geographically accurate Japan silhouettes ───────────────────
@@ -89,10 +89,10 @@ const kyushu =
 // Tsugaru Strait between Hokkaido and Honshu
 const straitLine = 'M 498 132 L 508 138'
 
-// Route: Tokyo → Kyoto → Osaka (Tōkaidō Shinkansen along Pacific coast)
+// Route: Tokyo → Kyoto → Osaka (Tōkaidō Shinkansen, inland path)
 const routePath =
-  'M 482 278 Q 466 282 450 286 Q 434 290 420 296 ' +
-  'Q 412 302 406 308 L 404 312 Q 402 316 398 318'
+  'M 476 262 Q 458 268 440 274 Q 426 280 414 284 ' +
+  'L 400 284 Q 398 290 396 296 L 394 302'
 
 function handleCityClick(slug: string) {
   document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth' })
@@ -144,8 +144,8 @@ export function RouteMap() {
 
         {/* Shinkansen icon along route */}
         <motion.text
-          x="448"
-          y="296"
+          x="440"
+          y="280"
           className="route-map__shinkansen-label"
           initial={shouldReduceMotion ? false : { opacity: 0 }}
           whileInView={
